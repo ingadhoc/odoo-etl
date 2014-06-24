@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    OpenERP Migrator
+#    Copyright (C) 2013 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- oerp_migrator.field -->
+<!-- oerp_migrator.field -->
+<!-- oerp_migrator.field -->
+<openerp>
+    <data>
+
+
+        <!-- FORMVIEW -->
+<!--         <record id="view_oerp_migrator_field_form" model="ir.ui.view">
+            <field name="name">oerp_migrator.field.form</field>
+            <field name="model">oerp_migrator.field</field>
+            <field name="inherit_id" ref="oerp_migrator.view_oerp_migrator_field_form"/>
+            <field name="arch" type="xml">
+                <field name="model_id" position="after">
+                    <field name="type"/>
+                 </field> 
+            </field>
+        </record> -->
+        
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

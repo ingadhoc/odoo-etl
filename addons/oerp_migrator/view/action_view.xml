@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    OpenERP Migrator
+#    Copyright (C) 2014 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- oerp_migrator.action -->
+<!-- oerp_migrator.action -->
+<!-- oerp_migrator.action -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_oerp_migrator_action_filter" model="ir.ui.view">
+            <field name="name">oerp_migrator.action.select</field>
+            <field name="model">oerp_migrator.action</field>
+            <field name="arch" type="xml">
+                <search string="action" version="7.0">
+                    <group string="By Attribute">
+                    <field name="blocked" string="Blocked"
+                            />
+                    <field name="sequence" string="Sequence"
+                            />
+                    <field name="state" string="State"
+                            />
+                    <field name="name" string="Name"
+                            />
+                    <field name="source_domain" string="Source Domain"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="manager_id" string="Manager"
+                            />
+                    <field name="source_model_id" string="Source Model"
+                            />
+                    <field name="target_model_id" string="Target Model"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_oerp_migrator_action_form" model="ir.ui.view">
+            <field name="name">oerp_migrator.action.form</field>
+            <field name="model">oerp_migrator.action</field>
+            <field name="arch" type="xml">
+                <form string="action" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="action">
+                     <group>
+                        <field name="blocked"
+                            />
+                        <field name="sequence"
+                            />
+                        <field name="state"
+                            />
+                        <field name="name"
+                            />
+                        <field name="source_domain"
+                            />
+                        <field name="log"
+                            />
+                        <field name="migration_notes"
+                            />
+                        <field name="repeating_action"
+                            />
+                        <field name="source_id_exp"
+                            />
+                        <field name="target_id_exp"
+                            />
+                        <field name="from_rec_id"
+                            />
+                        <field name="to_rec_id"
+                            />
+                    <field name="field_mapping_ids"
+                            context="{'default_target_model_id':target_model_id, 'default_source_model_id':source_model_id}"
+                            />
+                    <field name="source_model_id"
+                            />
+                    <field name="target_model_id"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_oerp_migrator_action_tree" model="ir.ui.view">
+            <field name="name">oerp_migrator.action.tree</field>
+            <field name="model">oerp_migrator.action</field>
+            <field name="arch" type="xml">
+                <tree string="action"
+                    colors="grey:state == 'disabled';green:state == 'enabled';blue:state == 'to_analyze'"
+                    >
+                    <field name="blocked"
+                        />
+                    <field name="sequence"
+                            widget="handle"
+                        />
+                    <field name="state"
+                        />
+                    <field name="name"
+                        />
+                    <field name="source_model_id"
+                        />
+                    <field name="target_model_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

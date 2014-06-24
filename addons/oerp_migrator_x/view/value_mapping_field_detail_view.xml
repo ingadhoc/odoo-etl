@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    OpenERP Migrator
+#    Copyright (C) 2014 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- oerp_migrator.value_mapping_field_detail -->
+<!-- oerp_migrator.value_mapping_field_detail -->
+<!-- oerp_migrator.value_mapping_field_detail -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_oerp_migrator_value_mapping_field_detail_filter" model="ir.ui.view">
+            <field name="name">oerp_migrator.value_mapping_field_detail.select</field>
+            <field name="model">oerp_migrator.value_mapping_field_detail</field>
+            <field name="inherit_id" ref="oerp_migrator.view_oerp_migrator_value_mapping_field_detail_filter"/>
+            <field name="arch" type="xml">
+                <group string="By Attribute">
+                    <field name="source_name"  filter_domain="['|',('source_external_model_record_id.name','ilike',self),('source_external_model_record_id.ext_id','ilike',self)]" string="Source..."/>
+                    <!-- <field name="source_name"  string="Source...22222"/> -->
+                    <filter name="to_map" string="To Map" domain="[('target_external_model_record_id','=',False)]"/>
+                </group>
+            </field>
+        </record>
+
+        <record id="oerp_migrator.action_oerp_migrator_value_mapping_field_detail_values_mapping" model="ir.actions.act_window">
+            <!-- <field name="name">Values Mapping</field> -->
+            <!-- <field name="res_model">oerp_migrator.value_mapping_field_detail</field> -->
+            <!-- <field name="view_type">form</field> -->
+            <!-- <field name="view_mode">tree,form</field> -->
+            <!-- <field name="view_id" ref="view_oerp_migrator_value_mapping_field_detail_tree"/> -->
+            <!-- <field name="search_view_id" ref="view_oerp_migrator_value_mapping_field_detail_filter"/> -->
+            <!-- <field name="domain">[]</field> -->
+            <field name="context">{'search_default_to_map':1}</field>
+        </record>
+
+        <!-- FORMVIEW -->
+<!--         <record id="view_oerp_migrator_value_mapping_field_detail_form" model="ir.ui.view">
+            <field name="name">oerp_migrator.value_mapping_field_detail.form</field>
+            <field name="model">oerp_migrator.value_mapping_field_detail</field>
+            <field name="arch" type="xml">
+                <form string="value_mapping_field_detail" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="value_mapping_field_detail">
+                     <group>
+                        <field name="source_external_model_record_id"
+                            />
+                        <field name="target_external_model_record_id"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record> -->
+
+        <!-- TREEVIEW -->
+
+        <record id="oerp_migrator.view_oerp_migrator_value_mapping_field_detail_tree" model="ir.ui.view">
+            <field name="name">oerp_migrator.value_mapping_field_detail.tree</field>
+            <field name="model">oerp_migrator.value_mapping_field_detail</field>
+            <field name="arch" type="xml">
+                <tree string="value_mapping_field_detail" editable="top">
+                    <field name="source_external_model_record_id" invisible="context.get('type',False)!='id'" required="context.get('type',False)=='id'" domain="[('external_model_id','=',source_model_id)]"/>
+                    <field name="target_external_model_record_id" invisible="context.get('type',False)!='id'" required="context.get('type',False)=='id'" domain="[('external_model_id','=',target_model_id)]"/>
+                    <field name="source_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="target_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="source_model_id" invisible="1"/>
+                    <field name="target_model_id" invisible="1"/>
+                    <field name="value_mapping_field_id" required="0" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

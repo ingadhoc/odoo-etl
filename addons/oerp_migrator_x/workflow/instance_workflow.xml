@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Saas Manager
+#    Copyright (C) 2013 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- saas.instance -->
+<!-- saas.instance -->
+<!-- saas.instance -->
+<openerp>
+    <data>
+        <!-- Workflow -->
+
+<!--         <record id="instance_instance_wkf" model="workflow">
+            <field name="name">saas.instance.instance</field>
+            <field name="osv">saas.instance</field>
+            <field name="on_create">True</field>
+        </record> -->
+
+        <!-- Activities -->
+
+<!--         <record id="a_0CED_20A7" model="workflow.activity">
+            <field name="wkf_id" ref="instance_instance_wkf"/>
+            <field name="flow_start">True</field>
+            <field name="name">Draft</field>
+            <field name="action">
+                write({'state':'draft'})
+            </field>
+            <field name="kind">function</field>
+        </record> -->
+<!--         <record id="a_0CED_20A9" model="workflow.activity">
+            <field name="wkf_id" ref="instance_instance_wkf"/>
+            <field name="name">Pending</field>
+            <field name="action">
+                write({'state':'pending'})
+            </field>
+            <field name="kind">function</field>
+        </record> -->
+        <record id="saas.a_0CED_20AB" model="workflow.activity">
+            <field name="wkf_id" ref="saas.instance_instance_wkf"/>
+            <field name="name">Open</field>
+            <field name="action">
+                action_open()
+                write({'state':'open'})
+            </field>
+            <field name="kind">function</field>
+         </record>
+<!--        <record id="a_0CED_20AD" model="workflow.activity">
+            <field name="wkf_id" ref="instance_instance_wkf"/>
+            <field name="name">Close</field>
+            <field name="action">
+                write({'state':'close'})
+            </field>
+            <field name="kind">function</field>
+        </record>
+        <record id="a_0CED_20AE" model="workflow.activity">
+            <field name="wkf_id" ref="instance_instance_wkf"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancelled</field>
+            <field name="action">
+                write({'state':'cancelled'})
+            </field>
+            <field name="kind">function</field>
+        </record> -->
+
+        <!-- Transitions -->
+
+<!--         <record id="t_0CED_20B0" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20AB"/>
+            <field name="act_to" ref="a_0CED_20A9"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20AA" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20A7"/>
+            <field name="act_to" ref="a_0CED_20A9"/>
+            <field name="signal">sgn_require</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20AC" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20A9"/>
+            <field name="act_to" ref="a_0CED_20AB"/>
+            <field name="signal">sgn_open</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20B1" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20AD"/>
+            <field name="act_to" ref="a_0CED_20AE"/>
+            <field name="signal">sgn_cancel</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20B2" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20AB"/>
+            <field name="act_to" ref="a_0CED_20AD"/>
+            <field name="signal">sgn_close</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20B3" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20AB"/>
+            <field name="act_to" ref="a_0CED_20AE"/>
+            <field name="signal">sgn_cancel</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20B4" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20A9"/>
+            <field name="act_to" ref="a_0CED_20AE"/>
+            <field name="signal">sgn_cancel</field>
+            <field name="condition">True</field>
+        </record>
+        <record id="t_0CED_20BB" model="workflow.transition">
+            <field name="act_from" ref="a_0CED_20AE"/>
+            <field name="act_to" ref="a_0CED_20A7"/>
+            <field name="signal">sgn_to_draft</field>
+            <field name="condition">True</field>
+        </record>
+ -->    
+        </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

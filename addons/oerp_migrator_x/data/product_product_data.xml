@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+        <data noupdate="1">
+        <record
+            id="product_saas_clinic"
+            model="product.product">
+            <field name="name">Clinic</field>
+            <field name="saas_product" eval="True"/>
+            <field name="base_url">clinicadhoc.com.ar</field>
+            <field name="server_url">accounts.clinicadhoc.com.ar</field>
+            <field name="server_port">80</field>
+            <field name="server_super_admin_pwd">admin</field>
+            <field name="admin_name">admin</field>
+            <field name="admin_pass">admin</field>
+            <field name="template_db_name">template_clinic</field>        
+        </record>
+             
+        </data>
+</openerp>

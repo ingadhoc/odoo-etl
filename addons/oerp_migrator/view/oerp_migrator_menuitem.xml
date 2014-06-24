@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    OpenERP Migrator
+#    Copyright (C) 2014 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+-->
+<openerp>
+    <data>
+
+        <menuitem
+            name="Migrations"
+            id="menu_migrations"
+            sequence="100"
+            />
+
+
+        <menuitem
+            name="Data"
+            id="menu_data"
+            sequence="100"
+            parent="menu_migrations"
+            />
+
+        <record id="action_oerp_migrator_action_actions" model="ir.actions.act_window">
+            <field name="name">Actions</field>
+            <field name="res_model">oerp_migrator.action</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_action_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_action_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Actions"
+            id="menu_actions"
+            sequence="20"
+            action="action_oerp_migrator_action_actions"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_field_external_fields" model="ir.actions.act_window">
+            <field name="name">External Fields</field>
+            <field name="res_model">oerp_migrator.field</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_field_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_field_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="External Fields"
+            id="menu_external_fields"
+            sequence="50"
+            action="action_oerp_migrator_field_external_fields"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_external_model_external_models" model="ir.actions.act_window">
+            <field name="name">External Models</field>
+            <field name="res_model">oerp_migrator.external_model</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_external_model_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_external_model_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="External Models"
+            id="menu_external_models"
+            sequence="40"
+            action="action_oerp_migrator_external_model_external_models"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_field_mapping_fields_mapping" model="ir.actions.act_window">
+            <field name="name">Fields Mapping</field>
+            <field name="res_model">oerp_migrator.field_mapping</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_field_mapping_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_field_mapping_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Fields Mapping"
+            id="menu_fields_mapping"
+            sequence="30"
+            action="action_oerp_migrator_field_mapping_fields_mapping"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_manager_manager" model="ir.actions.act_window">
+            <field name="name">Manager</field>
+            <field name="res_model">oerp_migrator.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_manager_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_manager_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Manager"
+            id="menu_manager"
+            sequence="10"
+            action="action_oerp_migrator_manager_manager"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_value_mapping_field_value_mapping_fields" model="ir.actions.act_window">
+            <field name="name">Value Mapping Fields</field>
+            <field name="res_model">oerp_migrator.value_mapping_field</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_value_mapping_field_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_value_mapping_field_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Value Mapping Fields"
+            id="menu_value_mapping_fields"
+            sequence="35"
+            action="action_oerp_migrator_value_mapping_field_value_mapping_fields"
+            parent="menu_data"
+            />
+
+        <record id="action_oerp_migrator_value_mapping_field_detail_values_mapping" model="ir.actions.act_window">
+            <field name="name">Values Mapping</field>
+            <field name="res_model">oerp_migrator.value_mapping_field_detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oerp_migrator_value_mapping_field_detail_tree"/>
+            <field name="search_view_id" ref="view_oerp_migrator_value_mapping_field_detail_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Values Mapping"
+            id="menu_values_mapping"
+            sequence="37"
+            action="action_oerp_migrator_value_mapping_field_detail_values_mapping"
+            parent="menu_data"
+            />
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

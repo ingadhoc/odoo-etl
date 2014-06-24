@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    OpenERP Migrator
+#    Copyright (C) 2014 Sistemas ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- oerp_migrator.external_model -->
+<!-- oerp_migrator.external_model -->
+<!-- oerp_migrator.external_model -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_oerp_migrator_external_model_filter" model="ir.ui.view">
+            <field name="name">oerp_migrator.external_model.select</field>
+            <field name="model">oerp_migrator.external_model</field>
+            <field name="arch" type="xml">
+                <search string="external_model" version="7.0">
+                    <group string="By Attribute">
+                    <field name="sequence" string="Sequence"
+                            />
+                    <field name="type" string="Type"
+                            />
+                    <field name="name" string="Name"
+                            />
+                    <field name="model" string="Model"
+                            />
+                    <field name="order" string="Order"
+                            />
+                    <field name="records" string="Records"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="manager_id" string="Manager"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_oerp_migrator_external_model_form" model="ir.ui.view">
+            <field name="name">oerp_migrator.external_model.form</field>
+            <field name="model">oerp_migrator.external_model</field>
+            <field name="arch" type="xml">
+                <form string="external_model" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="external_model">
+                     <group>
+                        <field name="sequence"
+                            />
+                        <field name="type"
+                            />
+                        <field name="name"
+                            />
+                        <field name="model"
+                            />
+                        <field name="order"
+                            attrs="{'invisible':[('type','!=','source')]}"
+                            />
+                        <field name="records"
+                            />
+                    <field name="field_ids"
+                            />
+                    <field name="manager_id"
+                            />
+                    <field name="external_model_record_ids"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_oerp_migrator_external_model_tree" model="ir.ui.view">
+            <field name="name">oerp_migrator.external_model.tree</field>
+            <field name="model">oerp_migrator.external_model</field>
+            <field name="arch" type="xml">
+                <tree string="external_model"
+                    >
+                    <field name="sequence"
+                        />
+                    <field name="type"
+                        />
+                    <field name="name"
+                        />
+                    <field name="model"
+                        />
+                    <field name="records"
+                        />
+                    <field name="manager_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->
