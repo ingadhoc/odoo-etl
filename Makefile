@@ -1,14 +1,14 @@
 all: addons
 
-design/oerp_migrator.xmi: design/oerp_migrator.zargo
-	-echo "REBUILD oerp_migrator.xmi from oerp_migrator.zargo. I cant do it"
+design/elt.xmi: design/elt.zargo
+	-echo "REBUILD elt.xmi from elt.zargo. I cant do it"
 
-addons: oerp_migrator
+addons: elt
 
-oerp_migrator: design/oerp_migrator.uml
+elt: design/elt.uml
 	xmi2oerp -r -i $< -t addons -v 2
 
 clean:
-	rm -rf addons/oerp_migrator/*
+	rm -rf addons/elt/*
 	sleep 1
-	touch design/oerp_migrator.uml
+	touch design/elt.uml

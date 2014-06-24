@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- FORMVIEW -->
+        <record id="view_elt_field_mapping_form" model="ir.ui.view">
+            <field name="name">elt.field_mapping.form</field>
+            <field name="model">elt.field_mapping</field>
+            <field name="inherit_id" ref="elt.view_elt_field_mapping_form"/>
+            <field name="arch" type="xml">
+                <header>
+                    <button name="run_expressions" string="Run Expressions" type="object"/>
+                </header>
+                <field name="target_field_id" position="attributes">
+                    <attribute name="on_change">onchange_target_field_id(target_field_id)</attribute>
+                </field>
+                <field name="source_field_id" position="attributes">
+                    <attribute name="on_change">onchange_source_field_id(source_field_id)</attribute>
+                </field>
+                <form>
+                    <field name="target_model_id" invisible="1"/>
+                    <field name="source_model_id" invisible="1"/>
+                    <field name="manager_id" invisible="1"/>
+                </form>      
+            </field>
+        </record>
+
+        <record id="view_elt_field_mapping_tree" model="ir.ui.view">
+            <field name="name">elt.field_mapping.tree</field>
+            <field name="model">elt.field_mapping</field>
+            <field name="inherit_id" ref="elt.view_elt_field_mapping_tree"/>
+            <field name="arch" type="xml">
+                <tree position="attributes">
+                    <!-- <attribute name="editable">top</attribute> -->
+                    <attribute name="colors">grey:state == 'disabled';blue:state == 'to_analyze';green:state == 'enabled';red:source_field_ttype!=target_field_ttype;</attribute>
+                </tree>
+                <field name="source_field" position="after">
+                    <field name="source_field_ttype" invisible="0"/>
+                </field>
+                <tree>
+                    <field name="target_field_ttype" invisible="1"/>
+                </tree>
+                    <!-- <field name="enabled"/> -->
+                    <!-- <field name="type"/> -->
+                    <!-- <field name="source_field_id" domain="[('model_id','=',source_model)]" on_change="onchange_source_field_id(source_field_id)"/> -->
+                    <!-- <field name="source_subfield"/> -->
+                    <!-- <field name="target_field_id" domain="[('model_id','=',target_model)]" on_change="onchange_target_field_id(target_field_id)"/> -->
+                    <!-- <field name="target_field_id" domain="[('model_id','=',target_model)]" on_change="onchange_target_field_id(target_field_id)" attrs="{'required':[('type','=','field')]}"/> -->
+                    <!-- <field name="target_field"/> -->
+                    <!-- <field name="target_subfield"/> -->
+                    <!-- <field name="expression" /> -->
+                    <!-- <field name="expression" attrs="{'required':[('type','=','expression')]}"/> -->
+            </field>
+        </record>
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

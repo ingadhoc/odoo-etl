@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <!-- FORMVIEW -->
+<!--         <record id="view_elt_field_form" model="ir.ui.view">
+            <field name="name">elt.field.form</field>
+            <field name="model">elt.field</field>
+            <field name="inherit_id" ref="elt.view_elt_field_form"/>
+            <field name="arch" type="xml">
+                <field name="model_id" position="after">
+                    <field name="type"/>
+                 </field> 
+            </field>
+        </record> -->
+        
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

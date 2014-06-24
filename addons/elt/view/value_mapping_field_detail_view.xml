@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    odoo ELT
+#    Copyright (C) 2014 Ingenieria ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- elt.value_mapping_field_detail -->
+<!-- elt.value_mapping_field_detail -->
+<!-- elt.value_mapping_field_detail -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_elt_value_mapping_field_detail_filter" model="ir.ui.view">
+            <field name="name">elt.value_mapping_field_detail.select</field>
+            <field name="model">elt.value_mapping_field_detail</field>
+            <field name="arch" type="xml">
+                <search string="value_mapping_field_detail" version="7.0">
+                    <group string="By Attribute">
+                    <field name="source_value_id" string="Source Value"
+                            />
+                    <field name="target_value_id" string="Target Value"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="value_mapping_field_id" string="value_mapping_field_id"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_elt_value_mapping_field_detail_form" model="ir.ui.view">
+            <field name="name">elt.value_mapping_field_detail.form</field>
+            <field name="model">elt.value_mapping_field_detail</field>
+            <field name="arch" type="xml">
+                <form string="value_mapping_field_detail" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="value_mapping_field_detail">
+                     <group>
+                        <field name="source_external_model_record_id"
+                            domain="[('external_model_id','=',source_model_id)]"
+                            />
+                        <field name="target_external_model_record_id"
+                            domain="[('external_model_id','=',target_model_id)]"
+                            />
+                        <field name="source_value_id"
+                            />
+                        <field name="target_value_id"
+                            />
+                    <field name="value_mapping_field_id"
+                            invisible="True"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_elt_value_mapping_field_detail_tree" model="ir.ui.view">
+            <field name="name">elt.value_mapping_field_detail.tree</field>
+            <field name="model">elt.value_mapping_field_detail</field>
+            <field name="arch" type="xml">
+                <tree string="value_mapping_field_detail"
+                    >
+                    <field name="source_external_model_record_id"
+                        />
+                    <field name="target_external_model_record_id"
+                        />
+                    <field name="source_value_id"
+                        />
+                    <field name="target_value_id"
+                        />
+                    <field name="value_mapping_field_id"
+                            invisible="True"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->
