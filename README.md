@@ -1,7 +1,7 @@
-odoo-elt
+odoo-etl
 ========
 
-Odoo data manipulation, like an small ELT (Extract, Load, Transform) for odoo databases.
+Odoo data manipulation, like an small ETL (Extract, Transform and Load) for odoo databases.
 
 The main idea of the project is to give functional users the availability to move data from one odoo database to another odoo database. The design is quite simple, it use native odoo methods (primarily load and export_data).
 
