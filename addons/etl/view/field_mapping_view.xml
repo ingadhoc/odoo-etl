@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    odoo ETL
+#    Copyright (C) 2014 Ingenieria ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- etl.field_mapping -->
+<!-- etl.field_mapping -->
+<!-- etl.field_mapping -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_field_mapping_filter" model="ir.ui.view">
+            <field name="name">etl.field_mapping.select</field>
+            <field name="model">etl.field_mapping</field>
+            <field name="arch" type="xml">
+                <search string="field_mapping" version="7.0">
+                    <group string="By Attribute">
+                    <field name="blocked" string="Blocked"
+                            />
+                    <field name="state" string="State"
+                            />
+                    <field name="type" string="Source Type"
+                            />
+                    <field name="source_field_id" string="Source Field"
+                            />
+                    <field name="source_field" string="Source Exp."
+                            />
+                    <field name="target_field_id" string="Target Field"
+                            />
+                    <field name="target_field" string="Target Exp."
+                            />
+                    <field name="expression" string="Expression"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="action_id" string="Action"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_field_mapping_form" model="ir.ui.view">
+            <field name="name">etl.field_mapping.form</field>
+            <field name="model">etl.field_mapping</field>
+            <field name="arch" type="xml">
+                <form string="field_mapping" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="field_mapping">
+                     <group>
+                        <field name="blocked"
+                            />
+                        <field name="state"
+                            />
+                        <field name="type"
+                            />
+                        <field name="source_field_id"
+                            domain="[('type','=','source'),('model_id','=',source_model_id)]"
+                            attrs="{'required':[('type','=','migrated_id'),('state','in',['enabled'])]}"
+                            />
+                        <field name="source_field"
+                            attrs="{'required':[('type','in',['field','value_mapping']),('state','in',['enabled'])],'invisible':[('type','not in',['field','value_mapping'])]}"
+                            />
+                        <field name="target_field_id"
+                            domain="[('type','=','target'),('model_id','=',target_model_id)]"
+                            attrs="{'required':[('type','=','migrated_id'),('state','in',['enabled'])]}"
+                            />
+                        <field name="target_field"
+                            attrs="{'required':[('type','!=','migrated_id'),('state','in',['enabled'])],'invisible':[('type','=','migrated_id')]}"
+                            />
+                        <field name="expression"
+                            attrs="{'required':[('type','=','expression'),('state','in',['enabled'])],'invisible':[('type','!=','expression')]}"
+                            />
+                        <field name="value_mapping_field_id"
+                            context="{'default_manager_id':manager_id}"
+                            attrs="{'required':[('type','=','value_mapping'),('state','in',['enabled'])],'invisible':[('type','!=','value_mapping')]}"
+                            />
+                        <field name="model_field_id"
+                            domain="[('type','=','source'),('model_id','=',source_model_id)]"
+                            attrs="{'required':[('type','in',['migrated_id']),('state','in',['enabled'])],'invisible':[('type','not in',['migrated_id'])]}"
+                            />
+                        <field name="note"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_etl_field_mapping_tree" model="ir.ui.view">
+            <field name="name">etl.field_mapping.tree</field>
+            <field name="model">etl.field_mapping</field>
+            <field name="arch" type="xml">
+                <tree string="field_mapping"
+                    >
+                    <field name="blocked"
+                        />
+                    <field name="state"
+                        />
+                    <field name="type"
+                        />
+                    <field name="source_field"
+                        />
+                    <field name="target_field"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

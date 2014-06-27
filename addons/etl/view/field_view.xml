@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    odoo ETL
+#    Copyright (C) 2014 Ingenieria ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- etl.field -->
+<!-- etl.field -->
+<!-- etl.field -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_field_filter" model="ir.ui.view">
+            <field name="name">etl.field.select</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <search string="field" version="7.0">
+                    <group string="By Attribute">
+                    <field name="name" string="Name"
+                            />
+                    <field name="field_description" string="Field Description"
+                            />
+                    <field name="relation" string="Relation"
+                            />
+                    <field name="relation_field" string="Relation Field"
+                            />
+                    <field name="ttype" string="Type"
+                            />
+                    <field name="required" string="Required"
+                            />
+                    <field name="function" string="Function"
+                            />
+                    </group>
+                    <group string="By object">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_field_form" model="ir.ui.view">
+            <field name="name">etl.field.form</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <form string="field" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="field">
+                     <group>
+                        <field name="name"
+                            />
+                        <field name="field_description"
+                            />
+                        <field name="relation"
+                            />
+                        <field name="relation_field"
+                            />
+                        <field name="ttype"
+                            />
+                        <field name="required"
+                            />
+                        <field name="function"
+                            />
+                    <field name="model_id"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_etl_field_tree" model="ir.ui.view">
+            <field name="name">etl.field.tree</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <tree string="field"
+                    >
+                    <field name="name"
+                        />
+                    <field name="field_description"
+                        />
+                    <field name="relation"
+                        />
+                    <field name="ttype"
+                        />
+                    <field name="model_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

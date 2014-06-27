@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    odoo ETL
+#    Copyright (C) 2014 Ingenieria ADHOC
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- etl.value_mapping_field -->
+<!-- etl.value_mapping_field -->
+<!-- etl.value_mapping_field -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_value_mapping_field_filter" model="ir.ui.view">
+            <field name="name">etl.value_mapping_field.select</field>
+            <field name="model">etl.value_mapping_field</field>
+            <field name="arch" type="xml">
+                <search string="value_mapping_field" version="7.0">
+                    <group string="By Attribute">
+                    <field name="name" string="Field Name"
+                            />
+                    <field name="type" string="Type"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="manager_id" string="manager_id"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_value_mapping_field_form" model="ir.ui.view">
+            <field name="name">etl.value_mapping_field.form</field>
+            <field name="model">etl.value_mapping_field</field>
+            <field name="arch" type="xml">
+                <form string="value_mapping_field" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="value_mapping_field">
+                     <group>
+                        <field name="name"
+                            />
+                        <field name="type"
+                            />
+                        <field name="source_model_id"
+                            domain="[('type','=','source'),('manager_id','=',manager_id)]"
+                            attrs="{'invisible':[('type','!=','id')],'required':[('type','=','id')]}"
+                            />
+                        <field name="target_model_id"
+                            domain="[('type','=','target'),('manager_id','=',manager_id)]"
+                            attrs="{'invisible':[('type','!=','id')],'required':[('type','=','id')]}"
+                            />
+                    <field name="value_mapping_field_detail_ids"
+                            context="{'default_target_model_id':target_model_id,'default_source_model_id':source_model_id,'default_value_mapping_field_id':active_id,'type':type}"
+                            />
+                    <field name="value_mapping_field_value_ids"
+                            attrs="{'invisible':[('type','=','id')]}"
+                            />
+                    <field name="manager_id"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_etl_value_mapping_field_tree" model="ir.ui.view">
+            <field name="name">etl.value_mapping_field.tree</field>
+            <field name="model">etl.value_mapping_field</field>
+            <field name="arch" type="xml">
+                <tree string="value_mapping_field"
+                    >
+                    <field name="name"
+                        />
+                    <field name="type"
+                        />
+                    <field name="manager_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

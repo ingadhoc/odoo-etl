@@ -1,14 +1,14 @@
 all: addons
 
-design/elt.xmi: design/elt.zargo
-	-echo "REBUILD elt.xmi from elt.zargo. I cant do it"
+design/etl.xmi: design/etl.zargo
+	-echo "REBUILD etl.xmi from etl.zargo. I cant do it"
 
-addons: elt
+addons: etl
 
-elt: design/elt.uml
+etl: design/etl.uml
 	xmi2oerp -r -i $< -t addons -v 2
 
 clean:
-	rm -rf addons/elt/*
+	rm -rf addons/etl/*
 	sleep 1
-	touch design/elt.uml
+	touch design/etl.uml
