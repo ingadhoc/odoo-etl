@@ -41,9 +41,10 @@ class action(osv.osv):
         'note': fields.html(string='Notes'),
         'repeating_action': fields.boolean(string='Repeating Action?'),
         'source_id_exp': fields.char(string='source_id_exp', required=True),
-        'target_id_exp': fields.char(string='target_id_exp', required=True),
+        'target_id_type': fields.selection([(u'source_id', 'source_id'), (u'builded_id', 'builded_id')], string='Target ID Type', required=True),
         'from_rec_id': fields.integer(string='From Record'),
         'to_rec_id': fields.integer(string='To Record'),
+        'target_id_prefix': fields.char(string='target_id_prefix'),
         'manager_id': fields.many2one('etl.manager', string='Manager', ondelete='cascade', required=True), 
         'field_mapping_ids': fields.one2many('etl.field_mapping', 'action_id', string='Fields Mapping'), 
         'source_model_id': fields.many2one('etl.external_model', string='Source Model', required=True), 
@@ -53,7 +54,7 @@ class action(osv.osv):
     _defaults = {
         'source_domain': '[]',
         'source_id_exp': 'id',
-        'target_id_exp': 'id',
+        'target_id_type': 'source_id',
     }
 
     _order = "sequence"

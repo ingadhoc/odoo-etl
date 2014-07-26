@@ -67,57 +67,6 @@ class manager(osv.osv):
             target_wf_instance_ids = target_wf_instance_obj.search([('res_type','in',res_types)])
             target_wf_instance_obj.unlink(target_wf_instance_ids)
 
-    # def update_workflows(self, cr, uid, ids, context=None):
-    #     ''' ABANDONE ESTE METODO PORQUE ERA MUCHO QUILOMBO, si se quiere seguir, 
-    #     ya disponemos del source wofkitem, hay que leer el valor de estado y llevarlo a la bd de destino
-    #     pero mas facil es hacer como veniamos haciendo, lo dejo comentado por las dudas. Una de 
-    #     las complicaciones es que los estados del workflow no necesariamente son los mismos en una bd y la otra, 
-    #     y con el otro ya lo resolvimos con el value mapping'''
-    #     for manager in self.browse(cr, uid, ids):
-    #         (source_connection, target_connection) = self.open_connections(cr, uid, [manager.id], context=context)
-    #         target_wf_instance_obj = target_connection.get_model("workflow.instance")
-    #         source_wf_instance_obj = source_connection.get_model("workflow.instance")
-    #         target_wf_workitem_obj = target_connection.get_model("workflow.workitem")
-    #         source_wf_workitem_obj = source_connection.get_model("workflow.workitem")
-    #         res_types = literal_eval(manager.workflow_models)
-    #         source_ir_model_data_obj = source_connection.get_model('ir.model.data')
-    #         for res_type in res_types:
-    #             target_wf_instance_ids = target_wf_instance_obj.search([('res_type','=',res_type)])
-    #             target_wf_model_obj = target_connection.get_model(res_type)
-    #             source_wf_model_obj = source_connection.get_model(res_type)
-    #             # for target_wf_instance_id in target_wf_instance_ids:
-    #             #     target_wf_instance_read = target_wf_instance_obj.read(target_wf_instance_id, ['res_id'])
-    #             #     print 'target_wf_instance_read', target_wf_instance_read
-    #             #     print 'target_wf_instance_id', target_wf_instance_id['id']
-    #                 # external_id = target_wf_model.get_external_id([target_wf_instance_id])
-    #             for target_record in target_wf_model_obj.export_data(target_wf_instance_ids,['id','.id'])['datas']:
-    #                 # external_id = target_wf_model.export_data(target_wf_instance_id,['id'])
-    #                 print 'target_record', target_record
-    #                 if target_record[0]:
-    #                     external_id_splited = target_record[0].split('.', 1)
-    #                     if len(external_id_splited) == 1:
-    #                         module = False
-    #                         external_ref = external_id_splited[0] 
-    #                     else:
-    #                         module = external_id_splited[0]
-    #                         external_ref = external_id_splited[1]                
-    #                     source_id = False
-    #                     try:
-    #                         source_id = source_ir_model_data_obj.get_object_reference(module, external_ref)
-    #                         print 'source_id', source_id
-    #                     except:
-    #                         print 'not found:'
-                        
-    #                     if source_id:
-    #                         domain = [('res_id','=',source_id[1]),('res_type','=',res_type)]
-    #                         source_wf_id = source_wf_instance_obj.search(domain)
-    #                         if source_wf_id:
-    #                             source_wf_woritem_ids = source_wf_workitem_obj.search([('inst_id','=',source_wf_id)])
-    #                             if source_wf_woritem_ids:
-    #                                 source_wf_woritem_id = source_wf_woritem_ids[0]
-    #                                 print 'source_wf_woritem_id', source_wf_woritem_id
-
-
     def install_modules(self, cr, uid, ids, context=None):
         for manager in self.browse(cr, uid, ids):
             (source_connection, target_connection) = self.open_connections(cr, uid, [manager.id], context=context)

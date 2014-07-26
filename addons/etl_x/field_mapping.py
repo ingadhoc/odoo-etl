@@ -59,24 +59,30 @@ class field_mapping(osv.osv):
             if not source_connection or not target_connection:
                 (source_connection, target_connection) = self.pool.get('etl.manager').open_connections(cr, uid, [field_mapping.action_id.manager_id.id], context=context)
             source_model_obj = source_connection.get_model(field_mapping.action_id.source_model_id.model)
-            # target_model_obj = target_connection.get_model(field_mapping.action_id.target_model_id.model)    
             target_ir_model_data_obj = target_connection.get_model('ir.model.data')
             source_fields = ['id',field_mapping.source_field_id.name, field_mapping.model_field_id.name]
             source_model_data = source_model_obj.export_data([rec_id], source_fields)['datas']
             target_id = False
             if source_model_data:
                 source_id = source_model_data[0][1]
-                source_resource_obj = source_connection.get_model(source_model_data[0][2])
-                source_reference = source_resource_obj.export_data([source_id],['id'])['datas']
-                if source_reference[0]:
-                    source_reference_splited = source_reference[0][0].split('.', 1)
-                    if len(source_reference_splited) == 1:
-                        module = False
-                        external_ref = source_reference_splited[0] 
-                    else:
-                        module = source_reference_splited[0]
-                        external_ref = source_reference_splited[1]                
-                    target_id = target_ir_model_data_obj.get_object_reference(module, external_ref)[1]
+                try:
+                    source_resource_obj = source_connection.get_model(source_model_data[0][2])
+                except:
+                    target_id = False
+                else:
+                    source_reference = source_resource_obj.export_data([source_id],['id'])['datas']
+                    if source_reference[0]:
+                        source_reference_splited = source_reference[0][0].split('.', 1)
+                        if len(source_reference_splited) == 1:
+                            module = False
+                            external_ref = source_reference_splited[0] 
+                        else:
+                            module = source_reference_splited[0]
+                            external_ref = source_reference_splited[1]                                    
+                        try:
+                            target_id = target_ir_model_data_obj.get_object_reference(module, external_ref)[1]
+                        except:
+                            target_id = False
             result.append(target_id)
         return result
 

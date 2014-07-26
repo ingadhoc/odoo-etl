@@ -68,7 +68,8 @@ class action(osv.osv):
                 field_disable_words = literal_eval(action.manager_id.field_disable_words) 
 
             # get source fields thar are not functions ore one2many
-            source_domain = [('model_id.id','=',action.source_model_id.id),('ttype','not in', ['one2many']),'|',('function','=', False),('required','=', 'True')]
+            # Function in False or in '_fnct_read' (aparentemente _fnct_read es para campos related y los queremos mapear)
+            source_domain = [('model_id.id','=',action.source_model_id.id),('ttype','not in', ['one2many']),'|',('function','in', [False,'_fnct_read']),('required','=', 'True')]
             source_field_ids = migrator_field_obj.search(cr, uid, source_domain, context=context)
             
             mapping_data = []            
@@ -115,6 +116,8 @@ class action(osv.osv):
                         if target_field_rec.ttype == 'many2many':
                             relation = target_field_rec.relation
                             previus_action_ids = self.search(cr, uid, [('manager_id','=',action.manager_id.id),('sequence','<',action.sequence),('target_model_id.model','=',relation)], context=context)
+                            print 'previus_action_ids', previus_action_ids
+                            print 'domain', [('manager_id','=',action.manager_id.id),('sequence','<',action.sequence),('target_model_id.model','=',relation)]
                             if not previus_action_ids:
                                 state = 'other_class'
                     elif field.ttype == 'datetime' and target_field_rec.ttype == 'date' or field.ttype == 'date' and target_field_rec.ttype == 'datetime':
@@ -144,7 +147,8 @@ class action(osv.osv):
             mapping_fields = ['id', 'state','source_field_id/.id', 'source_field', 'type','target_field_id/.id', 'target_field','action_id/.id','value_mapping_field_id/.id']
             import_result = field_mapping_obj.load(cr, uid, mapping_fields, mapping_data)
             vals = {'log':import_result}
-            if action_has_active_field == True:
+
+            if action_has_active_field == True and action.source_domain == '[]':
                 vals['source_domain'] = "['|',('active','=',False),('active','=',True)]"
                 vals['repeating_action'] = repeating_action
             # write log and domain if active field exist
@@ -223,9 +227,9 @@ class action(osv.osv):
             source_model_ids = source_model_obj.search(domain)            
             print 'Records to import ', len(source_model_ids)
             print 'Building source data...'
-            # Empezamos con  los campos que definimos como id
+            # Empezamos con  los campos que definimos como id            
             source_fields = ['.id', action.source_id_exp]
-            target_fields = [action.target_id_exp]
+            target_fields = ['id']
 
             if repeated_action:
                 state = 'on_repeating'
@@ -277,12 +281,16 @@ class action(osv.osv):
                         new_field_ids = value_mapping_field_detail_obj.search(cr, uid, [('source_external_model_record_id.ext_id','=',field_value),
                             ('value_mapping_field_id','=',value_mapping_id)], context=context)
                         if new_field_ids:
-                            new_field_value = value_mapping_field_detail_obj.browse(cr, uid, new_field_ids[0], context=context).target_external_model_record_id.ext_id                    
+                            new_field_value = value_mapping_field_detail_obj.browse(cr, uid, new_field_ids[0], context=context).target_external_model_record_id.ext_id
                     elif value_mapping.type == 'selection':
                         new_field_ids = value_mapping_field_detail_obj.search(cr, uid, [('source_value_id.ext_id','=',field_value),
                             ('value_mapping_field_id','=',value_mapping_id)], context=context)
                         if new_field_ids:
                             new_field_value = value_mapping_field_detail_obj.browse(cr, uid, new_field_ids[0], context=context).target_value_id.ext_id                    
+                    # Convertimos a false todos aquellos mapeos al que no se les asigno pareja
+                    # Si el modelo permite valores false va a andar bien, si no va a dar el error y debera mapearse
+                    if new_field_value == None:
+                        new_field_value = False
                     target_record.append(new_field_value)
                 source_data_record.extend(target_record)
 
@@ -323,10 +331,13 @@ class action(osv.osv):
             print 'Removing auxliaria .id...'
             target_model_data = []
             for record in source_model_data:
-                target_model_data.append(record[1:])
+                if action.target_id_type == 'source_id':
+                    target_model_data.append(record[1:])
+                elif action.target_id_type == 'builded_id':
+                    target_model_data.append([action.target_id_prefix + '_' + str(record[0])] + record[2:])
 
             print 'Loading fields ...', target_fields
-            # print 'data:', target_model_data
+            print 'data:', target_model_data
             try:
                 import_result = target_model_obj.load(target_fields, target_model_data)
                 vals = {'log':import_result}

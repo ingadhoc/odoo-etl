@@ -28,6 +28,7 @@
                     <button name="match_fields" string="Match Fields" type="object"/>
                     <button name="check_m2o_depends" string="Check Depends" type="object"/>
                     <button name="run_action" string="Run Action" class="oe_highlight" type="object"/>
+                    <button name="run_one_by_one" string="Run One by One Action" type="object"/>
                     <button name="updata_records_number" string="Update Records Number" type="object"/>
                     <button name="run_repeated_action" class="oe_highlight"  string="Run Repeated Action" type="object" attrs="{'invisible':[('repeating_action','!=',True)]}"/>
                     <!-- <button name="dummy_button" string="Dummy Button" type="object"/> -->
@@ -60,7 +61,8 @@
                             <field name="source_records"/>
                             <field name="target_records"/>
                             <field name="source_id_exp"/>
-                            <field name="target_id_exp"/>
+                            <field name="target_id_type"/>
+                            <field name="target_id_prefix" attrs="{'required':[('target_id_type','=','builded_id')],'invisible':[('target_id_type','!=','builded_id')],}"/>
                         </group>
                         <notebook>
                             <page string="Field Mapping">

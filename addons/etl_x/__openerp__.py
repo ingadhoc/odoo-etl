@@ -5,8 +5,9 @@
     'demo_xml': [],
     'depends': [u'etl',],
     'description': u"""
-    Require openerplib que se obtiene de https://pypi.python.org/pypi/openerp-client-lib/1.0.0 y se puede instalar con:
-    sudo oerpenv pip install https://pypi.python.org/packages/source/o/openerp-client-lib/openerp-client-lib-1.0.0.tar.gz#md5=5aca790999472cf3488eb6bf71606d98
+It requires openerplib that you can get from https://pypi.python.org/pypi/openerp-client-lib/1.0.0. \n
+You can install it with: \n
+    pip install https://pypi.python.org/packages/source/o/openerp-client-lib/openerp-client-lib-1.0.0.tar.gz
     """,
     'init_xml': [],
     'installable': True,

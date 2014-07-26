@@ -50,7 +50,7 @@ class external_model(osv.osv):
                 # buid name wit readed fields
                 name = ''
                 while record:
-                    name += record.pop(0) + '; '
+                    name += str(record.pop(0)) + '; '
                 # append name
                 new_record.append(name)
                 # append model id
@@ -95,22 +95,6 @@ class external_model(osv.osv):
                     ttype = field_dic.get('type' or False)
                     relation = field_dic.get('relation' or False)
                     required = field_dic.get('required' or False)
-                    # not used
-                    # fnct_inv = field_dic.get('fnct_inv' or False)
-                    # digits = field_dic.get('digits' or False)
-                    # domain = field_dic.get('domain' or False)
-                    # selectable = field_dic.get('selectable' or False)
-                    # help = field_dic.get('help' or False)
-                    # fnct_inv_arg = field_dic.get('fnct_inv_arg' or False)
-                    # fnct_search = field_dic.get('fnct_search' or False)
-                    # store = field_dic.get('store' or False)
-                    # readonly = field_dic.get('readonly' or False)
-                    # context = field_dic.get('context' or False)
-                    
-                    # TODO remove this lines
-                    # model_id = self.get_external_id(cr, uid, [model.id], context=context).items()[0][1]
-                    # field_data = [field_id, model_id, string, name, relation, required, ttype, function]
-                    # field_id = model_id + '_' + name 
 
                     field_data = ['field_model_' + str(model.id) + name, model.id, string, name, relation, required, ttype, function]
                     model_field_data.append(field_data)
@@ -130,22 +114,16 @@ class external_model(osv.osv):
 
     def order_models(self, cr, uid, ids, context=None):
         migrator_field_obj = self.pool.get('etl.field') 
-        # order_ids = self.search(cr, uid, [('id','in',ids)], order='model_dependecies_qty, sequence', context=context)
         print ('Lines to order', len(ids))
-        # ids = [3259, 3271, 3246, 3265, 3175, 3274, 3250, 3275]
         new_order = []
         ordered_ids = []
         ordered_models = []
-        unordered_models = []
-        past_models = []
-        future_models = []
         models_to_order = []
         unordered_ids = ids
         order_rec = self.browse(cr, uid, ids, context=context)
         for rec in order_rec:
             models_to_order.append(rec.model)
         print 'Models_to_order', models_to_order
-        # for rec in order_rec:
         count = 0
         while unordered_ids and (count<100):
             count += 1
@@ -159,44 +137,25 @@ class external_model(osv.osv):
                 if (field.relation not in model_clean_dependecies) and (field.relation in models_to_order):
                     if not(field.relation == rec.model):
                         model_clean_dependecies.append(field.relation)
-                    # else:
-                        # print 'dependencia a el mismo'
-                        # TODOOOOOOOOOOOOOOOOOOOOOO usar este dato para algo! para macar la clase por ejemplo
 
-            # print ('model:', rec.model, '. Depen: ', model_dependecies)
             print 'Modelo: ',rec.model, ', depenencias: ', model_clean_dependecies
-            # print ('past_models', past_models)
             dependecies_ok = True
             for model_dependecy in model_clean_dependecies:
                 model_exception = self.check_dependency_exceptions(cr, uid, rec.model, model_dependecy, context=context)
-                # print ('Model_exception?', model_exception)
-                # if model_exception:
-                #     continue
                 if (model_dependecy not in ordered_models) and not model_exception:
-                # if model_dependecy not in past_models:
-                    # print ('no esta en past modules:', rec.model, '. Past modeuls: ', past_models)
                     dependecies_ok = False
                     break
-            # print ('unordered_ids', unordered_ids)
+
             unordered_ids.remove(rec_id)
             if dependecies_ok:
                 print 'Dependency ok!'
                 ordered_ids.append(rec.id)
-                # new_order.insert(-1, rec.id)
                 ordered_models.append(rec.model)
-
-                # past_models.insert(-1, rec.model)
             else:
                 print 'Break, dependency false!'
                 unordered_ids.append(rec_id)
-                # print ('unordered_ids', unordered_ids)
-                # new_order.append(rec.id)
-                # past_models.append(rec.model)
-
 
         order = 0
-        # print ('Ordered lines:', len(new_order))
-        print ''
         print 'Unordered Models:', unordered_ids
         print 'New Order:', ordered_models
         for model_id in new_order:
@@ -205,13 +164,11 @@ class external_model(osv.osv):
                 'order': order,
             }
             self.write(cr, uid, [model_id], vals, context=context)
-        # for rec in self.browse(cr, uid, new_order, context=context):
-            # print (rec.name, rec.model_dependecies)
     
     def check_dependency_exceptions(self, cr, uid, model, model_dependency, context=None):
-        # This function is for those cases where the dependency is in two ways, we add the exception so it can be ordered. 
-        # TODO: this is related to some fields being an exception in the model, for example, for users, you should not migrate partner (as it will be created automatically and partner don't exists before)
-        # print ('model',model, 'model_dependency', model_dependency)
+        '''This function is for those cases where the dependency is in two ways, we add the exception so it can be ordered. 
+        TODO: this is related to some fields being an exception in the model, for example, for users, you should not migrate partner (as it will be created automatically and partner don't exists before)'''
+
         if (model == 'res.company') and (model_dependency in ['res.partner']):    
             return True
         elif (model == 'res.users') and (model_dependency in ['res.partner','crm.case.section',]): 

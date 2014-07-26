@@ -53,7 +53,7 @@ class manager(osv.osv):
         'repeating_models': fields.text(string='Repeating Models'),
         'field_disable_words': fields.text(string='Fields Disable by Default Words'),
         'modules_to_install': fields.text(string='Modules To Install'),
-        'workflow_models': fields.char(string='Workflow Models', required=True),
+        'workflow_models': fields.char(string='Models to delete Workflows', required=True),
         'action_ids': fields.one2many('etl.action', 'manager_id', string='Actions', domain=[('state','in',['to_analyze','enabled'])]), 
         'external_model_ids': fields.one2many('etl.external_model', 'manager_id', string='External Models', readonly=True), 
         'value_mapping_field_ids': fields.one2many('etl.value_mapping_field', 'manager_id', string='Value Mapping Fields'), 

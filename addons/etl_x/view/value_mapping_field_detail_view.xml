@@ -56,7 +56,7 @@
             <field name="arch" type="xml">
                 <tree string="value_mapping_field_detail" editable="top">
                     <field name="source_external_model_record_id" invisible="context.get('type',False)!='id'" required="context.get('type',False)=='id'" domain="[('external_model_id','=',source_model_id)]"/>
-                    <field name="target_external_model_record_id" invisible="context.get('type',False)!='id'" required="context.get('type',False)=='id'" domain="[('external_model_id','=',target_model_id)]"/>
+                    <field name="target_external_model_record_id" invisible="context.get('type',False)!='id'" required="False" domain="[('external_model_id','=',target_model_id)]"/>
                     <field name="source_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
                     <field name="target_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
                     <field name="source_model_id" invisible="1"/>
