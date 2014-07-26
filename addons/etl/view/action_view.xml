@@ -85,11 +85,13 @@
                             />
                         <field name="source_id_exp"
                             />
-                        <field name="target_id_exp"
+                        <field name="target_id_type"
                             />
                         <field name="from_rec_id"
                             />
                         <field name="to_rec_id"
+                            />
+                        <field name="target_id_prefix"
                             />
                     <field name="field_mapping_ids"
                             context="{'default_target_model_id':target_model_id, 'default_source_model_id':source_model_id}"
