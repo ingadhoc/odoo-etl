@@ -11,7 +11,10 @@ This project was developed by a non developer so for sure you are gonna find lot
 
 It was developed using xmi2oerp tool, thanks Cristian Sebastian Rocha for that great work!
 
-You can see an ugly example video in the following link http://youtu.be/01nEOFoHeus, in this example we are going to show how to move data from a v6.1 database with demo data to a trunk database without demo data.
+You can see an ugly example video in the following links, in this example we are going to show how to move data from a v6.1 database with demo data to a trunk database without demo data. Links:
+* https://www.youtube.com/watch?v=HZQQaNQ9k7U
+* https://www.youtube.com/watch?v=VmScwCM3whg
+* https://www.youtube.com/watch?v=PS2ShlY1gLI
 
 Any feedback is welcome, if someone likes the idea, please don't hesitate to contact us so we can work together.
 
