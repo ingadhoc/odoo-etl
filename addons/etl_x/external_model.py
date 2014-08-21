@@ -96,7 +96,7 @@ class external_model(osv.osv):
                     relation = field_dic.get('relation' or False)
                     required = field_dic.get('required' or False)
 
-                    field_data = ['field_model_' + str(model.id) + name, model.id, string, name, relation, required, ttype, function]
+                    field_data = ['field_model_' + str(model.id) + '_' + name, model.id, string, name, relation, required, ttype, function]
                     model_field_data.append(field_data)
         print 'Writing fields data...'
         migrator_field_obj.load(cr, uid, field_fields, model_field_data, context=None)

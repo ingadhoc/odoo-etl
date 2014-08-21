@@ -34,7 +34,7 @@ class field_mapping(osv.osv):
     _columns = {
         'blocked': fields.boolean(string='Blocked'),
         'state': fields.selection([(u'on_repeating', 'on_repeating'), (u'to_analyze', 'to_analyze'), (u'enabled', 'enabled'), (u'disabled', 'disabled'), (u'other_class', 'other_class')], string='State', required=True),
-        'type': fields.selection([(u'field', 'field'), (u'expression', 'expression'), (u'migrated_id', u'Migrated ID'), (u'value_mapping', u'Value Mapping'), (u'date_adapt', u'Date Adapt')], string='Source Type'),
+        'type': fields.selection([(u'field', 'field'), (u'expression', 'expression'), (u'migrated_id', u'Migrated ID'), (u'value_mapping', u'Value Mapping'), (u'date_adapt', u'Date Adapt'), (u'reference', 'reference')], string='Source Type'),
         'source_field_id': fields.many2one('etl.field', string='Source Field'),
         'source_field': fields.char(string='Source Exp.'),
         'target_field_id': fields.many2one('etl.field', string='Target Field'),
@@ -42,6 +42,7 @@ class field_mapping(osv.osv):
         'expression': fields.text(string='Expression'),
         'value_mapping_field_id': fields.many2one('etl.value_mapping_field', string='Value Mapping Field'),
         'model_field_id': fields.many2one('etl.field', string='Model Field'),
+        'model_field': fields.char(string='Model Field Exp.'),
         'note': fields.html(string='Notes'),
         'action_id': fields.many2one('etl.action', string='Action', ondelete='cascade', required=True), 
     }

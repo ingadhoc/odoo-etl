@@ -77,20 +77,20 @@
                             />
                         <field name="source_field_id"
                             domain="[('type','=','source'),('model_id','=',source_model_id)]"
-                            attrs="{'required':[('type','=','migrated_id'),('state','in',['enabled'])]}"
+                            attrs="{'required':[('type','in',['migrated_id','reference']),('state','in',['enabled','on_repeating'])]}"
                             />
                         <field name="source_field"
-                            attrs="{'required':[('type','in',['field','value_mapping']),('state','in',['enabled'])],'invisible':[('type','not in',['field','value_mapping'])]}"
+                            attrs="{'required':[('type','in',['field','value_mapping']),('state','in',['enabled','on_repeating'])],'invisible':[('type','not in',['field','value_mapping'])]}"
                             />
                         <field name="target_field_id"
                             domain="[('type','=','target'),('model_id','=',target_model_id)]"
-                            attrs="{'required':[('type','=','migrated_id'),('state','in',['enabled'])]}"
+                            attrs="{'required':[('type','in',['migrated_id','reference']),('state','in',['enabled','on_repeating'])]}"
                             />
                         <field name="target_field"
-                            attrs="{'required':[('type','!=','migrated_id'),('state','in',['enabled'])],'invisible':[('type','=','migrated_id')]}"
+                            attrs="{'required':[('type','not in',['migrated_id','reference']),('state','in',['enabled','on_repeating'])],'invisible':[('type','in',['migrated_id','reference'])]}"
                             />
                         <field name="expression"
-                            attrs="{'required':[('type','=','expression'),('state','in',['enabled'])],'invisible':[('type','!=','expression')]}"
+                            attrs="{'required':[('type','=','expression'),('state','in',['enabled','on_repeating'])],'invisible':[('type','!=','expression')]}"
                             />
                         <field name="value_mapping_field_id"
                             context="{'default_manager_id':manager_id}"
@@ -98,6 +98,9 @@
                             />
                         <field name="model_field_id"
                             domain="[('type','=','source'),('model_id','=',source_model_id)]"
+                            attrs="{'invisible':[('type','not in',['migrated_id'])]}"
+                            />
+                        <field name="model_field"
                             attrs="{'required':[('type','in',['migrated_id']),('state','in',['enabled'])],'invisible':[('type','not in',['migrated_id'])]}"
                             />
                         <field name="note"

@@ -60,13 +60,15 @@
 			</model>
 		</userDefined>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jul 17 16:08:08 ART 2014'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Aug 21 15:52:21 ART 2014'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
     </XMI.documentation>
     <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
   <XMI.content>
+    <UML:CallAction xmi.id = '-64--88-56-1--3fdd37c2:13bde2231b0:-8000:0000000000002F93'
+      isSpecification = 'false' isAsynchronous = 'false'/>
     <UML:Model xmi.id = '127-0-1-1--17588d67:13b392fe554:-8000:0000000000000ACF'
       name = 'etl' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
       isAbstract = 'false'>
@@ -1418,24 +1420,6 @@
                     <UML:DataType href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--66344949:13b09938a14:-8000:0000000000000B9C'/>
                   </UML:StructuralFeature.type>
                 </UML:Attribute>
-                <UML:Attribute xmi.id = '127-0-1-1-6b603e33:14745b8dbbf:-8000:0000000000000E94'
-                  name = 'one_by_one' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-                  changeability = 'changeable' targetScope = 'instance'>
-                  <UML:StructuralFeature.multiplicity>
-                    <UML:Multiplicity xmi.id = '127-0-1-1-6b603e33:14745b8dbbf:-8000:0000000000000E95'>
-                      <UML:Multiplicity.range>
-                        <UML:MultiplicityRange xmi.id = '127-0-1-1-6b603e33:14745b8dbbf:-8000:0000000000000E96'
-                          lower = '1' upper = '1'/>
-                      </UML:Multiplicity.range>
-                    </UML:Multiplicity>
-                  </UML:StructuralFeature.multiplicity>
-                  <UML:ModelElement.stereotype>
-                    <UML:Stereotype href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--66344949:13b09938a14:-8000:00000000000011E5'/>
-                  </UML:ModelElement.stereotype>
-                  <UML:StructuralFeature.type>
-                    <UML:DataType href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--66344949:13b09938a14:-8000:0000000000000B98'/>
-                  </UML:StructuralFeature.type>
-                </UML:Attribute>
               </UML:Classifier.feature>
             </UML:Class>
             <UML:Class xmi.id = '127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E2B'
@@ -1569,7 +1553,7 @@
                     </UML:TaggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-420d0f97:14440a133af:-8000:0000000000000D96'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;migrated_id&apos;),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;migrated_id&apos;,&apos;reference&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;,&apos;on_repeating&apos;])]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1605,7 +1589,7 @@
                   <UML:ModelElement.taggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-1c508770:1441dc623d6:-8000:0000000000001578'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;field&apos;,&apos;value_mapping&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;field&apos;,&apos;value_mapping&apos;])]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;field&apos;,&apos;value_mapping&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;,&apos;on_repeating&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;field&apos;,&apos;value_mapping&apos;])]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1647,7 +1631,7 @@
                     </UML:TaggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-420d0f97:14440a133af:-8000:0000000000000D97'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;migrated_id&apos;),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;migrated_id&apos;,&apos;reference&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;,&apos;on_repeating&apos;])]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1683,7 +1667,7 @@
                   <UML:ModelElement.taggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-420d0f97:14440a133af:-8000:0000000000000D98'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;!=&apos;,&apos;migrated_id&apos;),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;migrated_id&apos;)]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;migrated_id&apos;,&apos;reference&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;,&apos;on_repeating&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;migrated_id&apos;,&apos;reference&apos;])]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1718,7 +1702,7 @@
                   <UML:ModelElement.taggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-1c508770:1441dc623d6:-8000:0000000000001579'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;expression&apos;),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;!=&apos;,&apos;expression&apos;)]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;expression&apos;),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;,&apos;on_repeating&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;!=&apos;,&apos;expression&apos;)]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1807,7 +1791,7 @@
                   <UML:ModelElement.taggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1-f0a5b70:146cdef3b92:-8000:0000000000000E83'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;migrated_id&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;migrated_id&apos;])]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;migrated_id&apos;])]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -1829,6 +1813,40 @@
                   </UML:ModelElement.taggedValue>
                   <UML:StructuralFeature.type>
                     <UML:Class xmi.idref = '127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E69'/>
+                  </UML:StructuralFeature.type>
+                </UML:Attribute>
+                <UML:Attribute xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E94'
+                  name = 'model_field' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+                  changeability = 'changeable' targetScope = 'instance'>
+                  <UML:StructuralFeature.multiplicity>
+                    <UML:Multiplicity xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E95'>
+                      <UML:Multiplicity.range>
+                        <UML:MultiplicityRange xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E96'
+                          lower = '1' upper = '1'/>
+                      </UML:Multiplicity.range>
+                    </UML:Multiplicity>
+                  </UML:StructuralFeature.multiplicity>
+                  <UML:ModelElement.stereotype>
+                    <UML:Stereotype href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--66344949:13b09938a14:-8000:00000000000011E5'/>
+                  </UML:ModelElement.stereotype>
+                  <UML:ModelElement.taggedValue>
+                    <UML:TaggedValue xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E97'
+                      isSpecification = 'false'>
+                      <UML:TaggedValue.dataValue>Model Field Exp.</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.type>
+                        <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1-2b464aa4:13b09d81b72:-8000:0000000000001573'/>
+                      </UML:TaggedValue.type>
+                    </UML:TaggedValue>
+                    <UML:TaggedValue xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E98'
+                      isSpecification = 'false'>
+                      <UML:TaggedValue.dataValue>{&apos;required&apos;:[(&apos;type&apos;,&apos;in&apos;,[&apos;migrated_id&apos;]),(&apos;state&apos;,&apos;in&apos;,[&apos;enabled&apos;])],&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,[&apos;migrated_id&apos;])]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.type>
+                        <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
+                      </UML:TaggedValue.type>
+                    </UML:TaggedValue>
+                  </UML:ModelElement.taggedValue>
+                  <UML:StructuralFeature.type>
+                    <UML:DataType href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--66344949:13b09938a14:-8000:0000000000000B9C'/>
                   </UML:StructuralFeature.type>
                 </UML:Attribute>
                 <UML:Attribute xmi.id = '127-0-1-1-1c508770:1441dc623d6:-8000:0000000000001574'
@@ -3805,6 +3823,8 @@
                 </UML:TaggedValue>
               </UML:ModelElement.taggedValue>
             </UML:EnumerationLiteral>
+            <UML:EnumerationLiteral xmi.id = '127-0-1-1--130b88ca:147f985ef38:-8000:0000000000000E99'
+              name = 'reference' isSpecification = 'false'/>
           </UML:Enumeration.literal>
         </UML:Enumeration>
         <UML:Enumeration xmi.id = '127-0-1-1-557cc8f:143f811896f:-8000:0000000000001023'
@@ -3962,8 +3982,6 @@
         </UML:Enumeration>
       </UML:Namespace.ownedElement>
     </UML:Model>
-    <UML:CallAction xmi.id = '-64--88-56-1--3fdd37c2:13bde2231b0:-8000:0000000000002F93'
-      isSpecification = 'false' isAsynchronous = 'false'/>
   </XMI.content>
 </XMI>
 <pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|127-0-1-1--17588d67:13b392fe554:-8000:0000000000000ACF"
@@ -4533,7 +4551,7 @@
       strokecolor="black"
     />
     <group name="Fig1.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[713, 200, 418, 232]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[713, 200, 418, 223]"
          href="127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E21"
          fill="0"
          fillcolor="white"
@@ -4547,7 +4565,7 @@
         x="713"
         y="200"
         width="418"
-        height="232"
+        height="223"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -4749,22 +4767,6 @@
         x="713"
         y="392"
         width="418"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >&lt;&lt;form&gt;&gt; target_id_prefix : Char</text>
-      <text name="Fig1.4.14"
-        x="713"
-        y="408"
-        width="418"
         height="22"
         fill="0"
         fillcolor="white"
@@ -4776,11 +4778,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >&lt;&lt;form&gt;&gt; one_by_one : Boolean</text>
+      >&lt;&lt;form&gt;&gt; target_id_prefix : Char</text>
     </group>
     <rectangle name="Fig1.5"
       x="712"
-      y="431"
+      y="423"
       width="420"
       height="1"
       fill="1"
@@ -4789,7 +4791,7 @@
       strokecolor="black"
     />
     <group name="Fig1.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[713, 432, 418, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[713, 424, 418, 28]"
          href="127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E21"
          fill="0"
          fillcolor="white"
@@ -4801,9 +4803,9 @@
       
       <rectangle name="Fig1.6.0"
         x="713"
-        y="432"
+        y="424"
         width="418"
-        height="21"
+        height="28"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -4812,7 +4814,7 @@
     </group>
   </group>
   <group name="Fig2"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[1376, 104, 420, 229]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[1376, 104, 420, 245]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E2B"
        fill="1"
        fillcolor="white"
@@ -4826,7 +4828,7 @@
       x="1376"
       y="104"
       width="420"
-      height="229"
+      height="245"
       fill="1"
       fillcolor="white"
       stroke="1"
@@ -4882,7 +4884,7 @@
       strokecolor="black"
     />
     <group name="Fig2.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1377, 128, 418, 184]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1377, 128, 418, 200]"
          href="127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E2B"
          fill="0"
          fillcolor="white"
@@ -4896,7 +4898,7 @@
         x="1377"
         y="128"
         width="418"
-        height="184"
+        height="200"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -5066,6 +5068,22 @@
         x="1377"
         y="288"
         width="418"
+        height="16"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >&lt;&lt;form&gt;&gt; model_field : Char</text>
+      <text name="Fig2.4.12"
+        x="1377"
+        y="304"
+        width="418"
         height="22"
         fill="0"
         fillcolor="white"
@@ -5081,7 +5099,7 @@
     </group>
     <rectangle name="Fig2.5"
       x="1376"
-      y="311"
+      y="327"
       width="420"
       height="1"
       fill="1"
@@ -5090,7 +5108,7 @@
       strokecolor="black"
     />
     <group name="Fig2.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1377, 312, 418, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1377, 328, 418, 21]"
          href="127-0-1-1--5f511f61:14190a252b9:-8000:0000000000000E2B"
          fill="0"
          fillcolor="white"
@@ -5102,7 +5120,7 @@
       
       <rectangle name="Fig2.6.0"
         x="1377"
-        y="312"
+        y="328"
         width="418"
         height="21"
         fill="0"
@@ -6773,7 +6791,7 @@
     </path>
   </group>
   <group name="Fig20"
-       description="org.argouml.uml.diagram.static_structure.ui.FigEnumeration[1880, 48, 129, 152]pathVisible=false;stereotypeView=0;operationsVisible=true;enumerationLiteralsVisible=true"
+       description="org.argouml.uml.diagram.static_structure.ui.FigEnumeration[1880, 48, 129, 168]pathVisible=false;stereotypeView=0;operationsVisible=true;enumerationLiteralsVisible=true"
        href="127-0-1-1-557cc8f:143f811896f:-8000:0000000000000D1B"
        fill="1"
        fillcolor="white"
@@ -6787,7 +6805,7 @@
       x="1880"
       y="48"
       width="129"
-      height="152"
+      height="168"
       fill="1"
       fillcolor="white"
       stroke="1"
@@ -6858,7 +6876,7 @@
       strokecolor="black"
     />
     <group name="Fig20.4"
-         description="org.argouml.uml.diagram.ui.FigEnumLiteralsCompartment[1881, 91, 127, 88]"
+         description="org.argouml.uml.diagram.ui.FigEnumLiteralsCompartment[1881, 91, 127, 104]"
          href="127-0-1-1-557cc8f:143f811896f:-8000:0000000000000D1B"
          fill="0"
          fillcolor="white"
@@ -6872,7 +6890,7 @@
         x="1881"
         y="91"
         width="127"
-        height="88"
+        height="104"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -6946,7 +6964,7 @@
         x="1881"
         y="155"
         width="127"
-        height="22"
+        height="16"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -6958,10 +6976,26 @@
         textsize="12"
         justification="Left"
       >date_adapt</text>
+      <text name="Fig20.4.6"
+        x="1881"
+        y="171"
+        width="127"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >reference</text>
     </group>
     <rectangle name="Fig20.5"
       x="1880"
-      y="178"
+      y="194"
       width="129"
       height="1"
       fill="1"
@@ -6970,7 +7004,7 @@
       strokecolor="black"
     />
     <group name="Fig20.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1881, 179, 127, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1881, 195, 127, 21]"
          href="127-0-1-1-557cc8f:143f811896f:-8000:0000000000000D1B"
          fill="0"
          fillcolor="white"
@@ -6982,7 +7016,7 @@
       
       <rectangle name="Fig20.6.0"
         x="1881"
-        y="179"
+        y="195"
         width="127"
         height="21"
         fill="0"

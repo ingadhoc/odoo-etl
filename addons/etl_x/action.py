@@ -122,6 +122,8 @@ class action(osv.osv):
                                 state = 'other_class'
                     elif field.ttype == 'datetime' and target_field_rec.ttype == 'date' or field.ttype == 'date' and target_field_rec.ttype == 'datetime':
                         mapping_type = 'date_adapt'
+                    elif field.ttype == 'reference':
+                        mapping_type = 'reference'
 
                 # Check if there is any value mapping for current field
                 value_mapping_field_id = False
@@ -245,6 +247,7 @@ class action(osv.osv):
             target_fields.extend([x.target_field for x in action.field_mapping_ids if x.state==state and x.type == 'date_adapt'])
             target_fields.extend([x.target_field for x in action.field_mapping_ids if x.state==state and x.type == 'expression'])
             target_fields.extend([x.target_field for x in action.field_mapping_ids if x.state==state and x.type == 'migrated_id'])
+            target_fields.extend([x.target_field for x in action.field_mapping_ids if x.state==state and x.type == 'reference'])
             
             # Read and append source values of type 'field' and type not m2m
             print 'Building none m2m field mapping...'
@@ -327,6 +330,15 @@ class action(osv.osv):
                     rec_id = rec[0]
                     migrated_id_results = field_mapping_obj.get_migrated_id(cr, uid, field_mapping_migrated_id_ids, int(rec_id), source_connection, target_connection, context=context)
                     rec.extend(migrated_id_results)
+
+            print 'Building reference fields...'
+            field_mapping_reference_ids = [x.id for x in action.field_mapping_ids if x.state==state and x.type == 'reference']
+            if field_mapping_reference_ids:
+                for rec in source_model_data:
+                    rec_id = rec[0]                    
+                    reference_results = field_mapping_obj.get_reference(cr, uid, field_mapping_reference_ids, int(rec_id), source_connection, target_connection, context=context)
+                    print 'reference_results', reference_results
+                    rec.extend(reference_results)
 
             print 'Removing auxliaria .id...'
             target_model_data = []

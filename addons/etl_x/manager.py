@@ -272,7 +272,8 @@ class manager(osv.osv):
             # we extend each record with type, manager and a sequence
             record.extend([relation_type, manager_id, int(record[0]) * 10])
             # replace the .id with our own external identifier
-            record [0] = 'man_' + str(manager_id) + '_' + relation_type + '_model_' + str(record[0])
+            record [0] = 'man_' + str(manager_id) + '_' + relation_type + '_' + str(record[1]).replace('.','_')
+            # record [0] = 'man_' + str(manager_id) + '_' + relation_type + '_model_' + str(record[0])
             external_model_data.append(record)
         
         # Load external_model_data to external models model

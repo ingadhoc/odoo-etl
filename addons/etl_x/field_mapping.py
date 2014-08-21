@@ -60,8 +60,11 @@ class field_mapping(osv.osv):
                 (source_connection, target_connection) = self.pool.get('etl.manager').open_connections(cr, uid, [field_mapping.action_id.manager_id.id], context=context)
             source_model_obj = source_connection.get_model(field_mapping.action_id.source_model_id.model)
             target_ir_model_data_obj = target_connection.get_model('ir.model.data')
-            source_fields = ['id',field_mapping.source_field_id.name, field_mapping.model_field_id.name]
+            source_fields = ['id',field_mapping.source_field_id.name, field_mapping.model_field]
+            print 'source_fields', source_fields
+            # source_fields = ['id',field_mapping.source_field_id.name, field_mapping.model_field_id.name]
             source_model_data = source_model_obj.export_data([rec_id], source_fields)['datas']
+            print 'source_model_data', source_model_data
             target_id = False
             if source_model_data:
                 source_id = source_model_data[0][1]
@@ -84,6 +87,49 @@ class field_mapping(osv.osv):
                         except:
                             target_id = False
             result.append(target_id)
+        return result
+
+    def get_reference(self, cr, uid, ids, rec_id, source_connection=False, target_connection=False, context=None):
+        '''Get reference for field ids  and one rec_id (from source database)
+        For example, for field mapping ids'''
+        if context is None:
+            context = {}
+        result = []
+        
+        for field_mapping in self.browse(cr, uid, ids, context=context):
+            if not source_connection or not target_connection:
+                (source_connection, target_connection) = self.pool.get('etl.manager').open_connections(cr, uid, [field_mapping.action_id.manager_id.id], context=context)
+            source_model_obj = source_connection.get_model(field_mapping.action_id.source_model_id.model)
+            target_ir_model_data_obj = target_connection.get_model('ir.model.data')
+            source_fields = [field_mapping.source_field_id.name]
+            source_model_data = source_model_obj.read([rec_id], source_fields)[0]
+            target_id = False
+            if source_model_data:
+                source_reference = source_model_data[field_mapping.source_field_id.name]
+                if source_reference:
+                    model, res_id = source_reference.split(',',1)
+                    try:
+                        source_resource_obj = source_connection.get_model(model)
+                    except:
+                        target_id = False
+                    else:
+                        source_ext_id = source_resource_obj.export_data([res_id],['id'])['datas']
+                        if source_ext_id[0]:
+                            source_ext_id_splited = source_ext_id[0][0].split('.', 1)
+                            if len(source_ext_id_splited) == 1:
+                                module = False
+                                external_ref = source_ext_id_splited[0] 
+                            else:
+                                module = source_ext_id_splited[0]
+                                external_ref = source_ext_id_splited[1]                                    
+                            try:
+                                target_id = target_ir_model_data_obj.get_object_reference(module, external_ref)[1]
+                            except:
+                                target_id = False
+            target_reference = False
+            if target_id:
+                target_reference = model + ',' + str(target_id)
+            result.append(target_reference)
         return result
 
     def run_expressions(self, cr, uid, ids, rec_id, source_connection=False, target_connection=False, context=None):
