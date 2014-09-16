@@ -125,7 +125,11 @@ class field_mapping(osv.osv):
                             try:
                                 target_id = target_ir_model_data_obj.get_object_reference(module, external_ref)[1]
                             except:
-                                target_id = False
+                                # Agregamos este nuevo try porque algunas veces module no es false si no que es como una cadena vacia
+                                try:
+                                    target_id = target_ir_model_data_obj.get_object_reference('', external_ref)[1]
+                                except:
+                                    target_id = False
             target_reference = False
             if target_id:
                 target_reference = model + ',' + str(target_id)
