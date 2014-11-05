@@ -30,6 +30,7 @@
                         <button name="match_models" string="Match Models" type="object"/>
                         <button name="order_actions" string="Order Actions" type="object"/>
                         <button name="run_actions" string="Run Actions" class="oe_highlight" type="object"/>
+                        <button name="read_active_source_models" string="Read Active Source Models" class="oe_highlight" type="object"/>
                         <button name="run_repeated_actions" string="Run Repeating Actions" class="oe_highlight" type="object"/>
                         <button name="delete_workflows" string="Delete Workflows" class="oe_highlight" type="object"/>
                         <!-- <button name="update_workflows" string="Update Workflows" class="oe_highlight" type="object"/> -->

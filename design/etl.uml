@@ -60,7 +60,7 @@
 			</model>
 		</userDefined>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Aug 21 15:53:20 ART 2014'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Nov 05 11:10:27 ART 2014'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -3095,7 +3095,7 @@
                     </UML:TaggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1--4ea99603:14638fd760e:-8000:0000000000000E5F'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;invisible&apos;:[(&apos;type&apos;,&apos;!=&apos;,&apos;id&apos;)],&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;id&apos;)]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,(&apos;id&apos;))],&apos;required&apos;:[(&apos;type&apos;,&apos;not in&apos;,(&apos;id&apos;))]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -3136,7 +3136,7 @@
                     </UML:TaggedValue>
                     <UML:TaggedValue xmi.id = '127-0-1-1--4ea99603:14638fd760e:-8000:0000000000000E60'
                       isSpecification = 'false'>
-                      <UML:TaggedValue.dataValue>{&apos;invisible&apos;:[(&apos;type&apos;,&apos;!=&apos;,&apos;id&apos;)],&apos;required&apos;:[(&apos;type&apos;,&apos;=&apos;,&apos;id&apos;)]}</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.dataValue>{&apos;invisible&apos;:[(&apos;type&apos;,&apos;not in&apos;,(&apos;id&apos;))],&apos;required&apos;:[(&apos;type&apos;,&apos;not in&apos;,(&apos;id&apos;))]}</UML:TaggedValue.dataValue>
                       <UML:TaggedValue.type>
                         <UML:TagDefinition href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1--6c1fde7f:13ceca5ec28:-8000:0000000000000C95'/>
                       </UML:TaggedValue.type>
@@ -8003,7 +8003,7 @@
     </group>
   </group>
   <group name="Fig27"
-       description="org.argouml.uml.diagram.static_structure.ui.FigEnumeration[0, 776, 136, 120]pathVisible=false;stereotypeView=0;operationsVisible=true;enumerationLiteralsVisible=true"
+       description="org.argouml.uml.diagram.static_structure.ui.FigEnumeration[0, 776, 136, 136]pathVisible=false;stereotypeView=0;operationsVisible=true;enumerationLiteralsVisible=true"
        href="127-0-1-1--19d61d27:14630057d14:-8000:0000000000000DF2"
        fill="1"
        fillcolor="white"
@@ -8017,7 +8017,7 @@
       x="0"
       y="776"
       width="136"
-      height="120"
+      height="136"
       fill="1"
       fillcolor="white"
       stroke="1"
@@ -8088,7 +8088,7 @@
       strokecolor="black"
     />
     <group name="Fig27.4"
-         description="org.argouml.uml.diagram.ui.FigEnumLiteralsCompartment[1, 819, 134, 56]"
+         description="org.argouml.uml.diagram.ui.FigEnumLiteralsCompartment[1, 819, 134, 63]"
          href="127-0-1-1--19d61d27:14630057d14:-8000:0000000000000DF2"
          fill="0"
          fillcolor="white"
@@ -8102,7 +8102,7 @@
         x="1"
         y="819"
         width="134"
-        height="56"
+        height="63"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -8159,7 +8159,7 @@
     </group>
     <rectangle name="Fig27.5"
       x="0"
-      y="874"
+      y="882"
       width="136"
       height="1"
       fill="1"
@@ -8168,7 +8168,7 @@
       strokecolor="black"
     />
     <group name="Fig27.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 875, 134, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 883, 134, 28]"
          href="127-0-1-1--19d61d27:14630057d14:-8000:0000000000000DF2"
          fill="0"
          fillcolor="white"
@@ -8180,9 +8180,9 @@
       
       <rectangle name="Fig27.6.0"
         x="1"
-        y="875"
+        y="883"
         width="134"
-        height="21"
+        height="28"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -8697,8 +8697,8 @@
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
                         ownerhref="127-0-1-1--19d61d27:14630057d14:-8000:0000000000000E3D"
-                        angle="57.0"
-                        offset="80" />
+                        angle="-49.0"
+                        offset="97" />
       <argouml:pathitem figname="Fig32.4"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"

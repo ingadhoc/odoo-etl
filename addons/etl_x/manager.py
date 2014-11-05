@@ -59,6 +59,14 @@ class manager(osv.osv):
         return [source_connection, target_connection]
 
 
+    def read_active_source_models(self, cr, uid, ids, context=None):
+        '''Run all actions (none repeating) of ids managers'''
+        action_obj = self.pool.get('etl.action')
+        for i in ids:
+            (source_connection, target_connection) = self.open_connections(cr, uid, [i], context=context)
+            action_ids = action_obj.search(cr, uid, [('manager_id','=',i),('state','=', 'enabled')], order='sequence', context=context)
+            action_obj.read_source_model(cr, uid, action_ids, source_connection, target_connection, context=context)
+
     def delete_workflows(self, cr, uid, ids, context=None):
         for manager in self.browse(cr, uid, ids):
             (source_connection, target_connection) = self.open_connections(cr, uid, [manager.id], context=context)

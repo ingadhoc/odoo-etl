@@ -207,6 +207,26 @@ class action(osv.osv):
     def run_repeated_action(self, cr, uid, ids, source_connection=False, target_connection=False, repeated_action=True, context=None):
         return self.run_action(cr, uid, ids, repeated_action=True, context=context)
 
+    def read_source_model(self, cr, uid, ids, source_connection=False, target_connection=False, repeated_action=False, context=None):
+        readed_model = []
+        for action in self.browse(cr, uid, ids, context=context):
+            if action.source_model_id.id in readed_model:
+                continue
+            print 'Reading model', action.source_model_id.model
+            if not source_connection:
+                (source_connection, target_connection) = self.pool.get('etl.manager').open_connections(cr, uid, [action.manager_id.id], context=context)
+            source_model_obj = source_connection.get_model(action.source_model_id.model)
+            domain = []
+            active_field_id = self.pool['etl.field'].search(cr, uid, [
+                ('model_id','=',action.source_model_id.id),
+                ('name','=','active'),
+                ])
+            if active_field_id:
+                domain = [('active','in',[True,False])]
+            source_model_ids = source_model_obj.search(domain)
+            source_model_obj.export_data(source_model_ids, ['id'])
+            readed_model.append(action.source_model_id.id)
+
     def run_action(self, cr, uid, ids, source_connection=False, target_connection=False, repeated_action=False, context=None):
         print 'Acciones que se van a correr: ', len(ids)
         migrator_model_obj = self.pool.get('etl.external_model')
