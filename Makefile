@@ -6,7 +6,7 @@ design/etl.xmi: design/etl.zargo
 addons: etl
 
 etl: design/etl.uml
-	xmi2oerp -r -i $< -t addons -v 2 -V 8.0
+	xmi2odoo -r -i $< -t addons -v 2 -V 8.0
 
 clean:
 	sleep 1
