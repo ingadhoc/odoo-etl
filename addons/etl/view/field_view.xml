@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_field_filter" model="ir.ui.view">
+            <field name="name">etl.field.select</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <search string="field">
+                    <field name="name" string="Name"
+                            />
+                    <field name="field_description" string="Field Description"
+                            />
+                    <field name="relation" string="Relation"
+                            />
+                    <field name="relation_field" string="Relation Field"
+                            />
+                    <field name="ttype" string="Type"
+                            />
+                    <field name="required" string="Required"
+                            />
+                    <field name="function" string="Function"
+                            />
+                    <group expand="0" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_field_form" model="ir.ui.view">
+            <field name="name">etl.field.form</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <form string="field">
+                    <header>
+                    </header>
+                    <sheet string="field">
+                       <div class="oe_right oe_button_box" name="buttons">
+                       </div>
+                     <group>
+                        <field name="name"
+                            /> 
+                        <field name="field_description"
+                            /> 
+                        <field name="relation"
+                            /> 
+                        <field name="relation_field"
+                            /> 
+                        <field name="ttype"
+                            /> 
+                        <field name="required"
+                            /> 
+                        <field name="function"
+                            /> 
+                        <field name="model_id"
+                        /> 
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_etl_field_tree" model="ir.ui.view">
+            <field name="name">etl.field.tree</field>
+            <field name="model">etl.field</field>
+            <field name="arch" type="xml">
+                <tree string="field"
+                    >
+                    <field name="name"
+                        />
+                    <field name="field_description"
+                        />
+                    <field name="relation"
+                        />
+                    <field name="ttype"
+                        />
+                    <field name="model_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

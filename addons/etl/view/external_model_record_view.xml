@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- SEARCH VIEW -->
+        <record id="view_etl_external_model_record_filter" model="ir.ui.view">
+            <field name="name">etl.external_model_record.select</field>
+            <field name="model">etl.external_model_record</field>
+            <field name="arch" type="xml">
+                <search string="external_model_record">
+                    <field name="ext_id" string="Value To be Mapped"
+                            />
+                    <field name="name" string="Help Name"
+                            />
+                    <group expand="0" string="Group By">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_etl_external_model_record_form" model="ir.ui.view">
+            <field name="name">etl.external_model_record.form</field>
+            <field name="model">etl.external_model_record</field>
+            <field name="arch" type="xml">
+                <form string="external_model_record">
+                    <header>
+                    </header>
+                    <sheet string="external_model_record">
+                       <div class="oe_right oe_button_box" name="buttons">
+                       </div>
+                     <group>
+                        <field name="ext_id"
+                            /> 
+                        <field name="name"
+                            /> 
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_etl_external_model_record_tree" model="ir.ui.view">
+            <field name="name">etl.external_model_record.tree</field>
+            <field name="model">etl.external_model_record</field>
+            <field name="arch" type="xml">
+                <tree string="external_model_record"
+                    >
+                    <field name="ext_id"
+                        />
+                    <field name="name"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->
