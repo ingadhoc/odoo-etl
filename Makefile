@@ -6,9 +6,8 @@ design/etl.xmi: design/etl.zargo
 addons: etl
 
 etl: design/etl.uml
-	xmi2oerp -r -i $< -t addons -v 2
+	xmi2oerp -r -i $< -t addons -v 2 -V 8.0
 
 clean:
-	rm -rf addons/etl/*
 	sleep 1
 	touch design/etl.uml
