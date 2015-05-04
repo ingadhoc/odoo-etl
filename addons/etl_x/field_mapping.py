@@ -73,7 +73,7 @@ class field_mapping(osv.osv):
                 except:
                     target_id = False
                 else:
-                    source_reference = source_resource_obj.export_data([source_id],['id'])['datas']
+                    source_reference = source_resource_obj.export_data([int(source_id)],['id'])['datas']
                     if source_reference[0]:
                         source_reference_splited = source_reference[0][0].split('.', 1)
                         if len(source_reference_splited) == 1:

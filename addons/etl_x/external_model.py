@@ -49,8 +49,16 @@ class external_model(osv.osv):
                 new_record.append(record.pop(0))
                 # buid name wit readed fields
                 name = ''
-                while record:
-                    name += str(record.pop(0)) + '; '
+                # record = record.decode("utf-8")
+                print 'record', record
+                name = '; '.join([x for x in record if x])
+                # while record:
+                #     # a = record.pop(0).encode("utf-8") 
+                #     print 'record[-1:]111111', record[-1:]
+                #     if record[-1:]:
+                #         name += str(record.pop(0).encode("utf-8")) + '; '
+                #     else:
+                #         name += str(record.pop(0)) + '; '
                 # append name
                 new_record.append(name)
                 # append model id
