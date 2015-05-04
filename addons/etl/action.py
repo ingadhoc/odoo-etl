@@ -170,13 +170,14 @@ class action(models.Model):
 
             # depending on the target field properties, set some other values
             target_field = ''
+            target_field_name = False
             if target_fields:
                 mapping_type = 'field'
                 target_field = target_fields[0]
 
                 target_field_name = target_field.name
                 if target_field.ttype in ['many2one', 'many2many']:
-                    target_field += '/id'
+                    target_field_name += '/id'
                     if target_field.ttype == 'many2many':
                         relation = target_field.relation
                         previus_actions = self.search([
@@ -209,10 +210,10 @@ class action(models.Model):
                 field.id,
                 source_field_name,
                 mapping_type,
-                target_field.id,
+                target_field and target_field.id or False,
                 target_field_name,
                 self.id,
-                value_mapping_field.id]
+                value_mapping_field and value_mapping_field.id or False]
 
             # See if mappings have already a blocked mapping created
             blocked_field_ids = field_mapping.search([
