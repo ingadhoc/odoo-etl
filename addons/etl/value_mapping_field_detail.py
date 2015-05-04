@@ -43,6 +43,23 @@ class value_mapping_field_detail(models.Model):
         string='value_mapping_field_id',
         required=True
         )
+    source_name = fields.Char(
+        related='source_external_model_record_id.name',
+        string='Source Name',
+        readonly=True,
+        )
+    source_model_id = fields.Many2one(
+        related='value_mapping_field_id.source_model_id',
+        relation='etl.external_model',
+        string='Source Model',
+        readonly=True,
+        )
+    target_model_id = fields.Many2one(
+        related='value_mapping_field_id.target_model_id',
+        relation='etl.external_model',
+        string='Target Model',
+        readonly=True,
+        )
 
     _constraints = [
     ]
