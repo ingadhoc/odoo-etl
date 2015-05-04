@@ -37,7 +37,11 @@
             <field name="model">etl.field_mapping</field>
             <field name="arch" type="xml">
                 <form string="field_mapping">
+                    <field name="target_model_id" invisible="1"/>
+                    <field name="source_model_id" invisible="1"/>
+                    <field name="manager_id" invisible="1"/>
                     <header>
+                        <button name="run_expressions" string="Run Expressions" type="object"/>
                     </header>
                     <sheet string="field_mapping">
                        <div class="oe_right oe_button_box" name="buttons">
@@ -93,6 +97,7 @@
             <field name="model">etl.field_mapping</field>
             <field name="arch" type="xml">
                 <tree string="field_mapping"
+                    colors="grey:state == 'disabled';blue:state == 'to_analyze';green:state == 'enabled';red:source_field_ttype!=target_field_ttype;"
                     >
                     <field name="blocked"
                         />
@@ -102,8 +107,10 @@
                         />
                     <field name="source_field"
                         />
+                    <field name="source_field_ttype" invisible="0"/>
                     <field name="target_field"
                         />
+                    <field name="target_field_ttype" invisible="1"/>
                 </tree>
             </field>
         </record>

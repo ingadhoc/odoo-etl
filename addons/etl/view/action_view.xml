@@ -23,6 +23,7 @@
                             />
                     <field name="target_model_id" string="Target Model"
                             />
+                    <filter name="not_grey" string="Not Grey" domain="[('state','not in',['disabled','no_records'])]"/>
                     <group expand="0" string="Group By">
                     </group>
                 </search>
@@ -36,46 +37,58 @@
             <field name="arch" type="xml">
                 <form string="action">
                     <header>
+                        <button name="match_fields" string="Match Fields" type="object"/>
+                        <button name="check_m2o_depends" string="Check Depends" type="object"/>
+                        <button name="run_action" string="Run Action" class="oe_highlight" type="object"/>
+                        <button name="run_one_by_one" string="Run One by One Action" type="object"/>
+                        <button name="updata_records_number" string="Update Records Number" type="object"/>
+                        <button name="run_repeated_action" class="oe_highlight"  string="Run Repeated Action" type="object" attrs="{'invisible':[('repeating_action','!=',True)]}"/>
+                        <!-- <button name="dummy_button" string="Dummy Button" type="object"/> -->
                     </header>
                     <sheet string="action">
-                       <div class="oe_right oe_button_box" name="buttons">
-                       </div>
-                     <group>
-                        <field name="blocked"
-                            /> 
-                        <field name="sequence"
-                            /> 
-                        <field name="state"
-                            /> 
-                        <field name="name"
-                            /> 
-                        <field name="source_domain"
-                            /> 
-                        <field name="log"
-                            /> 
-                        <field name="note"
-                            /> 
-                        <field name="repeating_action"
-                            /> 
-                        <field name="source_id_exp"
-                            /> 
-                        <field name="target_id_type"
-                            /> 
-                        <field name="from_rec_id"
-                            /> 
-                        <field name="to_rec_id"
-                            /> 
-                        <field name="target_id_prefix"
-                            /> 
-                        <field name="field_mapping_ids"
-                            context="{'default_target_model_id':target_model_id, 'default_source_model_id':source_model_id}"
-                        /> 
-                        <field name="source_model_id"
-                        /> 
-                        <field name="target_model_id"
-                        /> 
-                     </group>
-                    </sheet>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_inline" type="action" string="Fields Mapping"
+                                name="%(etl.action_etl_field_mapping_fields_mapping)d"
+                                context="{'search_default_action_id': active_id}"/>
+                        </div>
+                        <group col="2">
+                            <group col="2">
+                                <field name="name"/>
+                                <field name="source_domain"/>
+                                <field name="manager_id" required="'from_manager' not in context" invisible="'from_manager' in context"/>
+                            </group>
+                            <group col="4">
+                                <field name="state"/>
+                                <field name="blocked"/>
+                                <field name="sequence"/>
+                                <field name="repeating_action"/>
+                                <field name="from_rec_id"/>
+                                <field name="to_rec_id"/>
+                            </group>
+                        </group>
+                        <group col="4"  string="Models">
+                            <field name="source_model_id" domain="[('type','=','source'),('manager_id','=',manager_id)]"/>
+                            <field name="target_model_id" domain="[('type','=','target'),('manager_id','=',manager_id)]"/>
+                            <field name="source_records"/>
+                            <field name="target_records"/>
+                            <field name="source_id_exp"/>
+                            <field name="target_id_type"/>
+                            <field name="target_id_prefix" attrs="{'required':[('target_id_type','=','builded_id')],'invisible':[('target_id_type','!=','builded_id')],}"/>
+                        </group>
+                        <notebook>
+                            <page string="Field Mapping">
+                                <!-- <group col="1"> -->
+                                    <field name="field_mapping_ids" context="{'target_model':target_model_id, 'source_model':source_model_id}"/>
+                                <!-- </group> -->
+                            </page>
+                            <page string="Log">
+                                <field name="log"/>
+                            </page>     
+                            <page string="Notes">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>     
 
                 </form>
             </field>
@@ -102,6 +115,8 @@
                         />
                     <field name="target_model_id"
                         />
+                    <field name="source_records"/>
+                    <field name="target_records"/>   
                 </tree>
             </field>
         </record>

@@ -13,6 +13,8 @@
                             />
                     <field name="value_mapping_field_id" string="value_mapping_field_id"
                             />
+                    <field name="source_name"  filter_domain="['|',('source_external_model_record_id.name','ilike',self),('source_external_model_record_id.ext_id','ilike',self)]" string="Source..."/>
+                    <filter name="to_map" string="To Map" domain="[('target_external_model_record_id','=',False)]"/>
                     <group expand="0" string="Group By">
                     </group>
                 </search>
@@ -56,19 +58,14 @@
             <field name="name">etl.value_mapping_field_detail.tree</field>
             <field name="model">etl.value_mapping_field_detail</field>
             <field name="arch" type="xml">
-                <tree string="value_mapping_field_detail"
-                    >
-                    <field name="source_external_model_record_id"
-                        />
-                    <field name="target_external_model_record_id"
-                        />
-                    <field name="source_value_id"
-                        />
-                    <field name="target_value_id"
-                        />
-                    <field name="value_mapping_field_id"
-                            invisible="True"
-                        />
+                <tree string="value_mapping_field_detail" editable="top">
+                    <field name="source_external_model_record_id" invisible="context.get('type',False)in['char','selection']" required="context.get('type',False)=='id'" domain="[('external_model_id','=',source_model_id)]"/>
+                    <field name="target_external_model_record_id" invisible="context.get('type',False)in['char','selection']" required="False" domain="[('external_model_id','=',target_model_id)]"/>
+                    <field name="source_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="target_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="source_model_id" invisible="1"/>
+                    <field name="target_model_id" invisible="1"/>
+                    <field name="value_mapping_field_id" required="0" invisible="1"/>
                 </tree>
             </field>
         </record>

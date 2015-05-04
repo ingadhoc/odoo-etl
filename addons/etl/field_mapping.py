@@ -83,7 +83,7 @@ class field_mapping(models.Model):
         readonly=True,
         string='Target Type'
         )
-    target_field_ttype = fields.Many2one(
+    manager_id = fields.Many2one(
         related='action_id.manager_id',
         relation='etl.manager',
         readonly=True,
@@ -215,46 +215,6 @@ class field_mapping(models.Model):
             if 'result' in cxt['context']:
                 expression_result = cxt['context'].get('result')
             result.append(expression_result)
-        return result
-
-    def onchange_source_field_id(self, cr, uid, ids, source_field_id, context=None):
-        v = {}
-        if source_field_id:
-            migrator_field_obj = self.pool.get('etl.field')
-            migrator_field_rec = migrator_field_obj.browse(cr, uid, source_field_id, context=context)
-            
-            if not migrator_field_rec:
-                return {'value': v}
-            
-            if isinstance(migrator_field_rec, list):
-                migrator_field_rec = migrator_field_rec[0]
-            if migrator_field_rec.ttype == 'many2one':
-                v['source_field'] = migrator_field_rec.name + '/id'
-            else:            
-                v['source_field'] = migrator_field_rec.name
-        else:
-            v['source_field'] = False
-       
-        return {'value': v}        
-
-    def onchange_target_field_id(self, cr, uid, ids, target_field_id, context=None):
-        v = {}
-        if target_field_id:
-            migrator_field_obj = self.pool.get('etl.field')
-            migrator_field_rec = migrator_field_obj.browse(cr, uid, target_field_id, context=context)
-            
-            if not migrator_field_rec:
-                return {'value': v}
-            
-            if isinstance(migrator_field_rec, list):
-                migrator_field_rec = migrator_field_rec[0]
-            if migrator_field_rec.ttype == 'many2one':
-                v['target_field'] = migrator_field_rec.name + '/id'
-            else:
-                v['target_field'] = migrator_field_rec.name
-        else:
-            v['target_field'] = False
-       
-        return {'value': v}        
+        return result 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

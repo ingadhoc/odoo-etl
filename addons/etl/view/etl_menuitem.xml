@@ -21,6 +21,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_etl_action_tree"/>
             <field name="search_view_id" ref="view_etl_action_filter"/>
+            <field name="context">{'search_default_not_grey':1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create"> Click to create a Actions.</p>
             </field>
@@ -135,6 +136,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_etl_value_mapping_field_detail_tree"/>
             <field name="search_view_id" ref="view_etl_value_mapping_field_detail_filter"/>
+            <field name="context">{'search_default_to_map':1}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create"> Click to create a Values Mapping.</p>
             </field>

@@ -34,6 +34,9 @@
             <field name="arch" type="xml">
                 <form string="external_model">
                     <header>
+                        <!-- No tiene sentido ordenar un solo modelo, tiene que ser una lista de modelos -->
+                        <button type="object" name="read_fields_button" string="Read Fields"/>
+                        <button type="object" name="read_records" string="Read Records"/>
                     </header>
                     <sheet string="external_model">
                        <div class="oe_right oe_button_box" name="buttons">
@@ -52,12 +55,19 @@
                             /> 
                         <field name="records"
                             /> 
-                        <field name="field_ids"
-                        /> 
                         <field name="manager_id"
-                        /> 
-                        <field name="external_model_record_ids"
-                        /> 
+                        />
+                        <notebook colspan="2">
+                            <page string="Fields">
+                                <field name="field_ids"/>
+                            </page>
+                            <page string="Records">
+                                <group>
+                                    <field name="fields_to_read"/>
+                                    <field name="external_model_record_ids"/>
+                                </group>
+                            </page>
+                        </notebook>
                      </group>
                     </sheet>
 
