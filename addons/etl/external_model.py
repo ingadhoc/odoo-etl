@@ -137,7 +137,7 @@ class external_model(models.Model):
         return self.read_fields(False)
 
     @api.multi
-    def read_fields(self, connection=False, ):
+    def read_fields(self, connection=False):
         ''' Get fields for external models'''
         field_fields = [
             'id',

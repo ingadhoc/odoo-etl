@@ -1,7 +1,9 @@
-{   'active': False,
+{
+    'active': False,
     'author': u'Ingenieria ADHOC',
     'category': u'base.module_category_knowledge_management',
-    'data': [   u'security/etl_group.xml',
+    'data': [
+                u'security/etl_group.xml',
                 u'view/value_mapping_field_view.xml',
                 u'view/external_model_view.xml',
                 u'view/external_model_record_view.xml',
@@ -31,9 +33,16 @@
                 u'data/value_mapping_field_detail_track.xml',
                 'security/ir.model.access.csv',
                 u'view/etl_menuitem.xml',
-                ],
+             ],
     'depends': [],
-    'description': u'odoo ETL',
+    'description': """
+odoo ETL
+========
+Usefull Notes:
+--------------
+* It is recommendend to delete all external identifiers on source database for model "res_partner" because when creating a user, odoo simulates partner creation and raise a unique constraint (excepto admin user)
+* Also could be recommendend to delete external identifiers related to product and product_temlate (excepto to service product)
+""",
     'installable': True,
     'license': 'AGPL-3',
     'name': u'odoo ETL',

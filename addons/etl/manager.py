@@ -159,7 +159,6 @@ class manager(models.Model):
                 db=self.source_database,
                 user=self.source_login,
                 password=self.source_password)
-            source_connection.context = {'lang': self.source_lang}
         except Exception, e:
             raise Warning(
                 _("Unable to Connect to Database. 'Error: %s'") % e)
@@ -170,7 +169,6 @@ class manager(models.Model):
                 db=self.target_database,
                 user=self.target_login,
                 password=self.target_password)
-            target_connection.context = {'lang': self.target_lang}
         except Exception, e:
             raise Warning(
                 _("Unable to Connect to Database. 'Error: %s'") % e)

@@ -42,7 +42,7 @@
                         <button name="run_action" string="Run Action" class="oe_highlight" type="object"/>
                         <button name="updata_records_number" string="Update Records Number" type="object"/>
                         <button name="run_repeated_action" class="oe_highlight"  string="Run Repeated Action" type="object" attrs="{'invisible':[('repeating_action','!=',True)]}"/>
-                        <button name="action_block" string="Block" attrs="{'invisible':[('blocked','=',True)]}" type="object"/>
+                        <button name="action_block" class="oe_highlight" string="Block" attrs="{'invisible':[('blocked','=',True)]}" type="object"/>
                         <field name="state" widget="statusbar" clickable="True"/>
                     </header>
                     <sheet string="action">

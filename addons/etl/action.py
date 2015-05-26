@@ -47,7 +47,7 @@ class action(models.Model):
         )
     repeating_action = fields.Boolean(
         string='Repeating Action?',
-        # store=True,
+        store=True,
         compute='_get_repeating_action',
         )
     source_id_exp = fields.Char(
@@ -319,8 +319,8 @@ class action(models.Model):
             self, source_connection=False, target_connection=False):
         if not source_connection or not target_connection:
             (source_connection, target_connection) = self.manager_id.open_connections()
-        action.source_model_id.get_records(source_connection)
-        action.target_model_id.get_records(target_connection)
+        self.source_model_id.get_records(source_connection)
+        self.target_model_id.get_records(target_connection)
 
     @api.multi
     def run_repeated_action(
@@ -361,6 +361,9 @@ class action(models.Model):
         value_mapping_field_obj = self.env['etl.value_mapping_field']
         if not source_connection or not target_connection:
             (source_connection, target_connection) = self.manager_id.open_connections()
+        # add language to connections context
+        source_connection.context = {'lang': self.manager_id.source_lang}
+        target_connection.context = {'lang': self.manager_id.target_lang}
         _logger.info('Running action external_model_id.type %s' % self.name)
 
         domain = literal_eval(self.source_domain)
@@ -509,7 +512,7 @@ class action(models.Model):
             if self.target_id_type == 'source_id':
                 target_model_data.append(record[1:])
             elif self.target_id_type == 'builded_id':
-                target_model_data.append(['_' % (
+                target_model_data.append(['%s_%s' % (
                     self.target_id_prefix, str(record[0]))] + record[2:])
 
         try:
