@@ -149,6 +149,26 @@
             </field>
         </record>
 
+        <record id="action_etl_manager_manager" model="ir.actions.act_window">
+            <field name="name">Manager</field>
+            <field name="res_model">etl.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_manager_tree"/>
+            <field name="search_view_id" ref="view_etl_manager_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a Manager.</p>
+            </field>
+        </record>
+
+        <menuitem
+            name="Manager"
+            id="menu_manager"
+            sequence="10"
+            action="action_etl_manager_manager"
+            parent="menu_data"
+            />
+
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

@@ -83,6 +83,26 @@
             </field>
         </record>
 
+
+        <record id="action_etl_field_external_fields" model="ir.actions.act_window">
+            <field name="name">External Fields</field>
+            <field name="res_model">etl.field</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_field_tree"/>
+            <field name="search_view_id" ref="view_etl_field_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a External Fields.</p>
+            </field>
+        </record>
+
+        <menuitem
+            name="External Fields"
+            id="menu_external_fields"
+            sequence="50"
+            action="action_etl_field_external_fields"
+            parent="menu_data"
+            />
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

@@ -49,4 +49,31 @@ class value_mapping_field(models.Model):
     _constraints = [
     ]
 
+    @api.one
+    def map_record(self):
+        value_mapping_data = []
+        for source_record in self.source_model_id.external_model_record_ids:
+            domain = [
+                ('external_model_id', '=', self.target_model_id.id),
+                ('name', 'ilike', source_record.name)]
+            target_record = self.env[
+                'etl.external_model_record'].search(domain, limit=1)
+            value_mapping_data.append([
+                'value_mapping_' + str(source_record.id),
+                source_record.id,
+                target_record and target_record.id or False,
+                self.id,
+                ])
+
+        value_mapping_fields = [
+            'id',
+            'source_external_model_record_id/.id',
+            'target_external_model_record_id/.id',
+            'value_mapping_field_id/.id']
+        import_result = self.env['etl.value_mapping_field_detail'].load(
+            value_mapping_fields, value_mapping_data)
+
+        # write log and domain if active field exist
+        self.log = import_result
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

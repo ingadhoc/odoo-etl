@@ -126,6 +126,26 @@
             </field>
         </record>
 
+        <record id="action_etl_action_actions" model="ir.actions.act_window">
+            <field name="name">Actions</field>
+            <field name="res_model">etl.action</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_action_tree"/>
+            <field name="search_view_id" ref="view_etl_action_filter"/>
+            <field name="context">{'search_default_not_grey':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a Actions.</p>
+            </field>
+        </record>
+
+        <menuitem
+            name="Actions"
+            id="menu_actions"
+            sequence="20"
+            action="action_etl_action_actions"
+            parent="menu_data"
+            />
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

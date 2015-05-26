@@ -234,11 +234,11 @@ class action(models.Model):
                 value_mapping_field and value_mapping_field.id or False]
 
             # See if mappings have already a blocked mapping created
-            blocked_field_ids = field_mapping.search([
+            blocked_fields = field_mapping.search([
                 ('blocked', '=', True),
                 ('action_id', '=', self.id)])
-            blocked_field_ext_ids = field_mapping.export_data(
-                blocked_field_ids, ['id'])['datas']
+            blocked_field_ext_ids = blocked_fields.export_data(
+                ['id'])['datas']
             if [vals[0]] in blocked_field_ext_ids:
                 continue
             mapping_data.append(vals)
@@ -424,8 +424,11 @@ class action(models.Model):
         _logger.info('Building value mapping mapping...')
         # Read and append source values of type 'value_mapping'
         source_fields_value_mapping = [x.source_field for x in self.field_mapping_ids if x.state==state and x.type == 'value_mapping']
+        print 'source_fields_value_mapping', source_fields_value_mapping
         source_data_value_mapping = source_model_obj.export_data(source_model_ids, source_fields_value_mapping)['datas']
+        print 'source_data_value_mapping', source_data_value_mapping
         source_value_mapping_id = [x.value_mapping_field_id.id for x in self.field_mapping_ids if x.state==state and x.type == 'value_mapping']
+        print 'source_value_mapping_id', source_value_mapping_id
         for readed_record, source_data_record in zip(source_data_value_mapping, source_model_data):
             target_record = []
             for field_value, value_mapping_id in zip(readed_record, source_value_mapping_id):
@@ -434,18 +437,18 @@ class action(models.Model):
                     value_mapping_id)
                 # TODO mejorar esta cosa horrible, no hace falta guardar en dos clases separadas, deberia usar una sola para selection y para id
                 if value_mapping.type == 'id':
-                    new_field_ids = value_mapping_field_detail_obj.search([
+                    new_field = value_mapping_field_detail_obj.search([
                         ('source_external_model_record_id.ext_id', '=', field_value),
-                        ('value_mapping_field_id', '=', value_mapping_id)])
-                    if new_field_ids:
-                        new_field_value = value_mapping_field_detail_obj.browse(new_field_ids[0]).target_external_model_record_id.ext_id
+                        ('value_mapping_field_id', '=', value_mapping_id)],
+                        limit=1)
+                    # if new_fields:
+                    new_field_value = new_field.target_external_model_record_id.ext_id
                 elif value_mapping.type == 'selection':
-                    new_field_ids = value_mapping_field_detail_obj.search([
+                    new_field = value_mapping_field_detail_obj.search([
                         ('source_value_id.ext_id', '=', field_value),
-                        ('value_mapping_field_id', '=', value_mapping_id)])
-                    if new_field_ids:
-                        new_field_value = value_mapping_field_detail_obj.browse(
-                            new_field_ids[0]).target_value_id.ext_id
+                        ('value_mapping_field_id', '=', value_mapping_id)],
+                        limit=1)
+                    new_field_value = new_field.target_value_id.ext_id
                 # Convertimos a false todos aquellos mapeos al que no se les asigno pareja
                 # Si el modelo permite valores false va a andar bien, si no va a dar el error y debera mapearse
                 if new_field_value is None:

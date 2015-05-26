@@ -3,8 +3,8 @@
     <data>
 
         <menuitem
-            name="Migrations"
-            id="menu_migrations"
+            name="ETL"
+            id="menu_etl"
             sequence="10"
             />
 
@@ -12,143 +12,9 @@
             name="Data"
             id="menu_data"
             sequence="10"
-            parent="menu_migrations"
+            parent="menu_etl"
             />
-        <record id="action_etl_action_actions" model="ir.actions.act_window">
-            <field name="name">Actions</field>
-            <field name="res_model">etl.action</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_action_tree"/>
-            <field name="search_view_id" ref="view_etl_action_filter"/>
-            <field name="context">{'search_default_not_grey':1}</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a Actions.</p>
-            </field>
-        </record>
 
-        <menuitem
-            name="Actions"
-            id="menu_actions"
-            sequence="20"
-            action="action_etl_action_actions"
-            parent="menu_data"
-            />
-        <record id="action_etl_field_external_fields" model="ir.actions.act_window">
-            <field name="name">External Fields</field>
-            <field name="res_model">etl.field</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_field_tree"/>
-            <field name="search_view_id" ref="view_etl_field_filter"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a External Fields.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="External Fields"
-            id="menu_external_fields"
-            sequence="50"
-            action="action_etl_field_external_fields"
-            parent="menu_data"
-            />
-        <record id="action_etl_external_model_external_models" model="ir.actions.act_window">
-            <field name="name">External Models</field>
-            <field name="res_model">etl.external_model</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_external_model_tree"/>
-            <field name="search_view_id" ref="view_etl_external_model_filter"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a External Models.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="External Models"
-            id="menu_external_models"
-            sequence="40"
-            action="action_etl_external_model_external_models"
-            parent="menu_data"
-            />
-        <record id="action_etl_field_mapping_fields_mapping" model="ir.actions.act_window">
-            <field name="name">Fields Mapping</field>
-            <field name="res_model">etl.field_mapping</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_field_mapping_tree"/>
-            <field name="search_view_id" ref="view_etl_field_mapping_filter"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a Fields Mapping.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="Fields Mapping"
-            id="menu_fields_mapping"
-            sequence="30"
-            action="action_etl_field_mapping_fields_mapping"
-            parent="menu_data"
-            />
-        <record id="action_etl_manager_manager" model="ir.actions.act_window">
-            <field name="name">Manager</field>
-            <field name="res_model">etl.manager</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_manager_tree"/>
-            <field name="search_view_id" ref="view_etl_manager_filter"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a Manager.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="Manager"
-            id="menu_manager"
-            sequence="10"
-            action="action_etl_manager_manager"
-            parent="menu_data"
-            />
-        <record id="action_etl_value_mapping_field_value_mapping_fields" model="ir.actions.act_window">
-            <field name="name">Value Mapping Fields</field>
-            <field name="res_model">etl.value_mapping_field</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_value_mapping_field_tree"/>
-            <field name="search_view_id" ref="view_etl_value_mapping_field_filter"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a Value Mapping Fields.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="Value Mapping Fields"
-            id="menu_value_mapping_fields"
-            sequence="35"
-            action="action_etl_value_mapping_field_value_mapping_fields"
-            parent="menu_data"
-            />
-        <record id="action_etl_value_mapping_field_detail_values_mapping" model="ir.actions.act_window">
-            <field name="name">Values Mapping</field>
-            <field name="res_model">etl.value_mapping_field_detail</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_etl_value_mapping_field_detail_tree"/>
-            <field name="search_view_id" ref="view_etl_value_mapping_field_detail_filter"/>
-            <field name="context">{'search_default_to_map':1}</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create"> Click to create a Values Mapping.</p>
-            </field>
-        </record>
-
-        <menuitem
-            name="Values Mapping"
-            id="menu_values_mapping"
-            sequence="37"
-            action="action_etl_value_mapping_field_detail_values_mapping"
-            parent="menu_data"
-            />
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

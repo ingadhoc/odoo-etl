@@ -115,6 +115,27 @@
             </field>
         </record>
 
+
+        <record id="action_etl_field_mapping_fields_mapping" model="ir.actions.act_window">
+            <field name="name">Fields Mapping</field>
+            <field name="res_model">etl.field_mapping</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_field_mapping_tree"/>
+            <field name="search_view_id" ref="view_etl_field_mapping_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a Fields Mapping.</p>
+            </field>
+        </record>
+
+        <menuitem
+            name="Fields Mapping"
+            id="menu_fields_mapping"
+            sequence="30"
+            action="action_etl_field_mapping_fields_mapping"
+            parent="menu_data"
+            />
+
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

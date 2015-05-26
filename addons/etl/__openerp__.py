@@ -4,14 +4,15 @@
     'category': u'base.module_category_knowledge_management',
     'data': [
                 u'security/etl_group.xml',
+                u'view/etl_menuitem.xml',
                 u'view/value_mapping_field_view.xml',
                 u'view/external_model_view.xml',
                 u'view/external_model_record_view.xml',
                 u'view/field_mapping_view.xml',
                 u'view/field_view.xml',
+                u'view/action_view.xml',
                 u'view/manager_view.xml',
                 u'view/value_mapping_field_value_view.xml',
-                u'view/action_view.xml',
                 u'view/value_mapping_field_detail_view.xml',
                 u'data/value_mapping_field_properties.xml',
                 u'data/external_model_properties.xml',
@@ -32,7 +33,6 @@
                 u'data/action_track.xml',
                 u'data/value_mapping_field_detail_track.xml',
                 'security/ir.model.access.csv',
-                u'view/etl_menuitem.xml',
              ],
     'depends': [],
     'description': """
@@ -42,8 +42,10 @@ Usefull Notes:
 --------------
 * It is recommendend to delete all external identifiers on source database for model "res_partner" because when creating a user, odoo simulates partner creation and raise a unique constraint (excepto admin user)
 * Also could be recommendend to delete external identifiers related to product and product_temlate (excepto to service product)
+* Advisable to configure xmlrpc users to timezone cero to avoid errors
 """,
     'installable': True,
+    'application': True,
     'license': 'AGPL-3',
     'name': u'odoo ETL',
     'test': [],

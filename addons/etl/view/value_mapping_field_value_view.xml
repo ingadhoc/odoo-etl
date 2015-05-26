@@ -33,8 +33,6 @@
                             /> 
                         <field name="name"
                             /> 
-                        <field name="value_mapping_field_id"
-                        /> 
                      </group>
                     </sheet>
 
@@ -52,8 +50,6 @@
                     <field name="ext_id"
                         />
                     <field name="name"
-                        />
-                    <field name="value_mapping_field_id"
                         />
                 </tree>
             </field>

@@ -61,15 +61,34 @@
                 <tree string="value_mapping_field_detail" editable="top">
                     <field name="source_external_model_record_id" invisible="context.get('type',False)in['char','selection']" required="context.get('type',False)=='id'" domain="[('external_model_id','=',source_model_id)]"/>
                     <field name="target_external_model_record_id" invisible="context.get('type',False)in['char','selection']" required="False" domain="[('external_model_id','=',target_model_id)]"/>
-                    <field name="source_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
-                    <field name="target_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="source_value_id" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" options="{'no_create': True}" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
+                    <field name="target_value_id" options="{'no_create': True}" invisible="context.get('type',False)not in['char','selection']" required="context.get('type',False)in['char','selection']" domain="[('value_mapping_field_id','=',value_mapping_field_id)]"/>
                     <field name="source_model_id" invisible="1"/>
                     <field name="target_model_id" invisible="1"/>
                     <field name="value_mapping_field_id" required="0" invisible="1"/>
                 </tree>
             </field>
         </record>
+        <record id="action_etl_value_mapping_field_detail_values_mapping" model="ir.actions.act_window">
+            <field name="name">Values Mapping</field>
+            <field name="res_model">etl.value_mapping_field_detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_etl_value_mapping_field_detail_tree"/>
+            <field name="search_view_id" ref="view_etl_value_mapping_field_detail_filter"/>
+            <field name="context">{'search_default_to_map':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click to create a Values Mapping.</p>
+            </field>
+        </record>
 
+        <menuitem
+            name="Values Mapping"
+            id="menu_values_mapping"
+            sequence="37"
+            action="action_etl_value_mapping_field_detail_values_mapping"
+            parent="menu_data"
+            />
     </data>
 </openerp>
 <!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4

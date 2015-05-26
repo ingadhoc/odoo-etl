@@ -112,7 +112,7 @@ class external_model(models.Model):
         for record in external_model_record_data:
             # take out item o and init new_record with our own ext id
             new_record = [
-                'model%i_record_%i' % (self.id, record.pop(0))]
+                'model%i_record_%s' % (self.id, record.pop(0))]
             # append readed external id 'id' to new record
             new_record.append(record.pop(0))
             # buid name wit readed fields

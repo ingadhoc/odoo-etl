@@ -95,6 +95,26 @@ class field_mapping(models.Model):
     _constraints = [
     ]
 
+    @api.onchange('source_field_id')
+    def onchange_source_field(self):
+        source_field = False
+        if self.source_field_id:
+            source_field = self.source_field_id.name
+            if self.source_field_id.ttype in (
+                    'many2one', 'many2many', 'one2many'):
+                source_field += '/id'
+        self.source_field = source_field
+
+    @api.onchange('target_field_id')
+    def onchange_target_field(self):
+        target_field = False
+        if self.target_field_id:
+            target_field = self.target_field_id.name
+            if self.target_field_id.ttype in (
+                    'many2one', 'many2many', 'one2many'):
+                target_field += '/id'
+        self.target_field = target_field
+
     @api.multi
     def action_block(self):
         return self.write({'blocked': True})
