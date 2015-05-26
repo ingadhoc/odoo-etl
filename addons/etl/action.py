@@ -47,7 +47,8 @@ class action(models.Model):
         )
     repeating_action = fields.Boolean(
         string='Repeating Action?',
-        copy=False,
+        # store=True,
+        compute='_get_repeating_action',
         )
     source_id_exp = fields.Char(
         string='source_id_exp',
@@ -107,13 +108,30 @@ class action(models.Model):
     ]
 
     @api.one
+    @api.depends(
+        'field_mapping_ids.state'
+        )
+    def _get_repeating_action(self):
+        repeating_action = False
+        repeating_field_mapps = self.field_mapping_ids.search([
+            ('state', '=', 'on_repeating'),
+            ('action_id', '=', self.id),
+            ])
+        if repeating_field_mapps:
+            repeating_action = True
+        self.repeating_action = repeating_action
+
+    @api.multi
+    def action_block(self):
+        return self.write({'blocked': True})
+
+    @api.one
     def match_fields(self):
         ''' Match fields'''
         _logger.info("Matching fields on action %s" % self.name)
         migrator_field = self.env['etl.field']
         field_mapping = self.env['etl.field_mapping']
 
-        repeating_action = False
         # Get disabled and to analize words and fields
         field_disable_default = []
         field_analyze_default = []
@@ -204,7 +222,6 @@ class action(models.Model):
             # If field name = 'state' then we upload it on a repeating action so we are sure we can upload all the related data
             if field.name == 'state':
                 state = 'on_repeating'
-                repeating_action = True
             vals = [
                 'field_mapping_' + str(self.id) + '_' + str(field.id),
                 state,
@@ -243,7 +260,6 @@ class action(models.Model):
 
         if action_has_active_field and self.source_domain == '[]':
             vals['source_domain'] = "['|',('active','=',False),('active','=',True)]"
-            vals['repeating_action'] = repeating_action
         # write log and domain if active field exist
         self.write(vals)
         # TODO, si algo anda lento o mal hay que borrar esto. No puedo hacer el check m2o depends ants de tenerlas ordenadas
@@ -256,7 +272,6 @@ class action(models.Model):
         If there is at least one mapping field with repeating,
         make the action repeating '''
         data = []
-        repeating_action = False
 
         # Look for enabled or to analize future actions of this manager and
         # this action
@@ -283,7 +298,6 @@ class action(models.Model):
             dependency = mapping.source_field_id.relation
             if dependency in future_models:
                 state = 'on_repeating'
-                repeating_action = True
                 vals = [
                     'field_mapping_%s_%s' % (
                         str(self.id),
@@ -297,7 +311,6 @@ class action(models.Model):
         import_result = self.env['etl.field_mapping'].load(fields, data)
         vals = {
             'log': import_result,
-            'repeating_action': repeating_action,
         }
         self.write(vals)
 

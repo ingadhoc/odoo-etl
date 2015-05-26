@@ -31,7 +31,7 @@
                 u'data/value_mapping_field_detail_track.xml',
                 'security/ir.model.access.csv',
                 u'view/etl_menuitem.xml',
-                u'view/etl_actions.xml'],
+                ],
     'depends': [],
     'description': u'odoo ETL',
     'installable': True,

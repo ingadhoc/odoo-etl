@@ -40,9 +40,10 @@
                         <button name="match_fields" string="Match Fields" type="object"/>
                         <button name="check_m2o_depends" string="Check Depends" type="object"/>
                         <button name="run_action" string="Run Action" class="oe_highlight" type="object"/>
-                        <button name="run_one_by_one" string="Run One by One Action" type="object"/>
                         <button name="updata_records_number" string="Update Records Number" type="object"/>
                         <button name="run_repeated_action" class="oe_highlight"  string="Run Repeated Action" type="object" attrs="{'invisible':[('repeating_action','!=',True)]}"/>
+                        <button name="action_block" string="Block" attrs="{'invisible':[('blocked','=',True)]}" type="object"/>
+                        <field name="state" widget="statusbar" clickable="True"/>
                     </header>
                     <sheet string="action">
                         <div class="oe_right oe_button_box" name="buttons">
@@ -50,29 +51,34 @@
                                 name="%(etl.action_etl_field_mapping_fields_mapping)d"
                                 context="{'search_default_action_id': active_id}"/>
                         </div>
-                        <group col="2">
-                            <group col="2">
-                                <field name="name"/>
-                                <field name="source_domain"/>
-                                <field name="manager_id" required="'from_manager' not in context" invisible="'from_manager' in context"/>
-                            </group>
-                            <group col="4">
-                                <field name="state"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="source_domain"/>
+                        </group>
+                        <group>
+                            <group>
                                 <field name="blocked"/>
                                 <field name="sequence"/>
                                 <field name="repeating_action"/>
+                            </group>
+                            <group>
                                 <field name="from_rec_id"/>
                                 <field name="to_rec_id"/>
+                                <field name="manager_id" required="'from_manager' not in context" invisible="'from_manager' in context"/>
                             </group>
                         </group>
-                        <group col="4"  string="Models">
-                            <field name="source_model_id" domain="[('type','=','source'),('manager_id','=',manager_id)]"/>
-                            <field name="target_model_id" domain="[('type','=','target'),('manager_id','=',manager_id)]"/>
-                            <field name="source_records"/>
-                            <field name="target_records"/>
-                            <field name="source_id_exp"/>
-                            <field name="target_id_type"/>
-                            <field name="target_id_prefix" attrs="{'required':[('target_id_type','=','builded_id')],'invisible':[('target_id_type','!=','builded_id')],}"/>
+                        <group string="Models">
+                            <group>
+                                <field name="source_model_id" domain="[('type','=','source'),('manager_id','=',manager_id)]"/>
+                                <field name="source_id_exp"/>
+                                <field name="source_records"/>
+                            </group>
+                            <group>
+                                <field name="target_model_id" domain="[('type','=','target'),('manager_id','=',manager_id)]"/>
+                                <field name="target_id_type"/>
+                                <field name="target_records"/>
+                                <field name="target_id_prefix" attrs="{'required':[('target_id_type','=','builded_id')],'invisible':[('target_id_type','!=','builded_id')],}"/>
+                            </group>
                         </group>
                         <notebook>
                             <page string="Field Mapping">

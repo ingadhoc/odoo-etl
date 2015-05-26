@@ -96,6 +96,10 @@ class field_mapping(models.Model):
     ]
 
     @api.multi
+    def action_block(self):
+        return self.write({'blocked': True})
+
+    @api.multi
     def get_migrated_id(
             self, rec_id, source_connection=False, target_connection=False):
         '''Get migrated id for field ids  and one rec_id (from source database)
