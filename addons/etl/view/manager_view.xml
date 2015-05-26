@@ -67,6 +67,8 @@
                             <field name="source_password"
                                 password="True"
                                 />
+                            <field name="source_lang"
+                                />
                             <newline/>
                             <field name="target_hostname"
                                 />
@@ -78,6 +80,8 @@
                                 />
                             <field name="target_password"
                                 password="True"
+                                />
+                            <field name="target_lang"
                                 />
                             <newline/>
                         </group>
@@ -112,10 +116,10 @@
                                 <field name="note"/>
                             </page>
                             <page string="Value Mapping Fields">
-                                <field name="value_mapping_field_ids" context="{'default_manager_id':id}"/>
+                                <field name="value_mapping_field_ids" context="{'default_manager_id':id, 'from_manager': True}"/>
                             </page>
                             <page string="External Models">
-                                <field name="external_model_ids"/>
+                                <field name="external_model_ids" context="{'from_manager': True}"/>
                             </page>
                         </notebook>
                     </sheet>

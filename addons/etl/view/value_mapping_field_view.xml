@@ -70,7 +70,7 @@
                     <field name="type"
                         />
                     <field name="manager_id"
-                        />
+                        invisible="'from_manager' in context"/>
                 </tree>
             </field>
         </record>

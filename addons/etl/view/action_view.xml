@@ -43,7 +43,6 @@
                         <button name="run_one_by_one" string="Run One by One Action" type="object"/>
                         <button name="updata_records_number" string="Update Records Number" type="object"/>
                         <button name="run_repeated_action" class="oe_highlight"  string="Run Repeated Action" type="object" attrs="{'invisible':[('repeating_action','!=',True)]}"/>
-                        <!-- <button name="dummy_button" string="Dummy Button" type="object"/> -->
                     </header>
                     <sheet string="action">
                         <div class="oe_right oe_button_box" name="buttons">
