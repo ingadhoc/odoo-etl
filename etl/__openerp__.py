@@ -34,7 +34,7 @@
                 u'data/value_mapping_field_detail_track.xml',
                 'security/ir.model.access.csv',
              ],
-    'depends': [],
+    'depends': ['base'],
     'description': """
 odoo ETL
 ========
