@@ -217,7 +217,7 @@ class action(models.Model):
                 ('manager_id', '=', self.manager_id.id)])
             if value_mappings:
                 mapping_type = 'value_mapping'
-                value_mapping_field.id = value_mappings[0]
+                value_mapping_field = value_mappings[0]
 
             # If field name = 'state' then we upload it on a repeating action so we are sure we can upload all the related data
             if field.name == 'state':
