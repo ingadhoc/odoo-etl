@@ -1,0 +1,1004 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* etl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20150618\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-21 13:33+0000\n"
+"PO-Revision-Date: 2015-07-21 13:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_action_actions
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a Actions.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar Ações.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_field_external_fields
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a External Fields.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar Campos Externos.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_external_model_external_models
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a External Models.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar Modelos Externos.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_field_mapping_fields_mapping
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a Fields Mapping.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar um Mapeamento de Campos.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_manager_manager
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a Manager.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar um Gestor.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_value_mapping_field_value_mapping_fields
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a Value Mapping Fields.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar um Mapeamento de Valores dos Campos.</p>\n"
+"            "
+
+#. module: etl
+#: model:ir.actions.act_window,help:etl.action_etl_value_mapping_field_detail_values_mapping
+msgid "<p class=\"oe_view_nocontent_create\"> Click to create a Values Mapping.</p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\"> Clique para criar um Mapeamento de Valores.</p>\n"
+"            "
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,action_id:0
+msgid "Action"
+msgstr "Ação"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+#: field:etl.manager,action_ids:0
+#: model:ir.actions.act_window,name:etl.action_etl_action_actions
+#: model:ir.ui.menu,name:etl.menu_actions
+msgid "Actions"
+msgstr "Ações"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+#: view:etl.field_mapping:etl.view_etl_field_mapping_form
+msgid "Block"
+msgstr "Bloquear"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,blocked:0
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,blocked:0
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#. module: etl
+#: selection:etl.value_mapping_field,type:0
+msgid "Char (not implemented yet)"
+msgstr "Char (ainda não está implementado)"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Check Depends"
+msgstr "Verificar Dependências"
+
+#. module: etl
+#: field:etl.action,create_uid:0
+#: field:etl.external_model,create_uid:0
+#: field:etl.external_model_record,create_uid:0
+#: field:etl.field,create_uid:0
+#: field:etl.field_mapping,create_uid:0
+#: field:etl.manager,create_uid:0
+#: field:etl.value_mapping_field,create_uid:0
+#: field:etl.value_mapping_field_detail,create_uid:0
+#: field:etl.value_mapping_field_value,create_uid:0
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: etl
+#: field:etl.action,create_date:0
+#: field:etl.external_model,create_date:0
+#: field:etl.external_model_record,create_date:0
+#: field:etl.field,create_date:0
+#: field:etl.field_mapping,create_date:0
+#: field:etl.manager,create_date:0
+#: field:etl.value_mapping_field,create_date:0
+#: field:etl.value_mapping_field_detail,create_date:0
+#: field:etl.value_mapping_field_value,create_date:0
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: etl
+#: model:ir.ui.menu,name:etl.menu_data
+msgid "Data"
+msgstr "Data"
+
+#. module: etl
+#: selection:etl.field_mapping,type:0
+msgid "Date Adapt"
+msgstr "Adaptar Data"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Delete Workflows"
+msgstr "Apagar Workflows"
+
+#. module: etl
+#: field:etl.value_mapping_field,value_mapping_field_detail_ids:0
+msgid "Details"
+msgstr "Detalhes"
+
+#. module: etl
+#: model:ir.ui.menu,name:etl.menu_etl
+msgid "ETL"
+msgstr "ETL"
+
+#. module: etl
+#: code:addons\etl\external_model.py:162
+#, python-format
+msgid "Error getting connection"
+msgstr "Erro ao obter conexão"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Exceptions"
+msgstr "Exceções"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,expression:0
+msgid "Expression"
+msgstr "Expressão"
+
+#. module: etl
+#: model:ir.actions.act_window,name:etl.action_etl_field_external_fields
+#: model:ir.ui.menu,name:etl.menu_external_fields
+msgid "External Fields"
+msgstr "Campos Externos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+#: field:etl.manager,external_model_ids:0
+#: model:ir.actions.act_window,name:etl.action_etl_external_model_external_models
+#: model:ir.ui.menu,name:etl.menu_external_models
+msgid "External Models"
+msgstr "Modelos Externos"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,field_description:0
+msgid "Field Description"
+msgstr "Descrição do Campo"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Field Mapping"
+msgstr "Mapeamento de Campo"
+
+#. module: etl
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_filter
+#: field:etl.value_mapping_field,name:0
+msgid "Field Name"
+msgstr "Nome do Campo"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_form
+#: field:etl.external_model,field_ids:0
+msgid "Fields"
+msgstr "Campos"
+
+#. module: etl
+#: field:etl.manager,field_analyze_default:0
+msgid "Fields Analize by Default"
+msgstr "Campos Analizados por Defeito"
+
+#. module: etl
+#: field:etl.manager,field_disable_default:0
+msgid "Fields Disable by Default"
+msgstr "Campos Desativados por Defeito"
+
+#. module: etl
+#: field:etl.manager,field_disable_words:0
+msgid "Fields Disable by Default Words"
+msgstr "Campos Desativados por Palavras Padrão"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+#: field:etl.action,field_mapping_ids:0
+#: model:ir.actions.act_window,name:etl.action_etl_field_mapping_fields_mapping
+#: model:ir.ui.menu,name:etl.menu_fields_mapping
+msgid "Fields Mapping"
+msgstr "Mapeamento de Campos"
+
+#. module: etl
+#: field:etl.external_model,fields_to_read:0
+msgid "Fields to read"
+msgstr "Campos para ler"
+
+#. module: etl
+#: field:etl.action,from_rec_id:0
+msgid "From Record"
+msgstr "De Registo"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,function:0
+msgid "Function"
+msgstr "Função"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Get Records Number"
+msgstr "Obter número de registos"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: view:etl.external_model_record:etl.view_etl_external_model_record_filter
+#: view:etl.field:etl.view_etl_field_filter
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: view:etl.manager:etl.view_etl_manager_filter
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_filter
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: etl
+#: view:etl.external_model_record:etl.view_etl_external_model_record_filter
+#: field:etl.external_model_record,name:0
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_filter
+#: field:etl.value_mapping_field_value,name:0
+msgid "Help Name"
+msgstr "Nome de ajuda"
+
+#. module: etl
+#: field:etl.action,id:0
+#: field:etl.external_model,id:0
+#: field:etl.external_model_record,id:0
+#: field:etl.field,id:0
+#: field:etl.field_mapping,id:0
+#: field:etl.manager,id:0
+#: field:etl.value_mapping_field,id:0
+#: field:etl.value_mapping_field_detail,id:0
+#: field:etl.value_mapping_field_value,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: etl
+#: selection:etl.value_mapping_field,type:0
+msgid "Id"
+msgstr "ID"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Install Modules"
+msgstr "Instalar Módulos"
+
+#. module: etl
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_filter
+#: field:etl.value_mapping_field_value,ext_id:0
+msgid "Key"
+msgstr "Chave"
+
+#. module: etl
+#: help:etl.manager,source_lang:0
+msgid "Language used on source database translatable fields"
+msgstr "Linguagem utilizada nos campos traduzíveis do banco de dados de origem"
+
+#. module: etl
+#: help:etl.manager,target_lang:0
+msgid "Language used on target database translatable fields"
+msgstr "Linguagem utilizada nos campos traduzíveis do banco de dados de destino"
+
+#. module: etl
+#: field:etl.action,write_uid:0
+#: field:etl.external_model,write_uid:0
+#: field:etl.external_model_record,write_uid:0
+#: field:etl.field,write_uid:0
+#: field:etl.field_mapping,write_uid:0
+#: field:etl.manager,write_uid:0
+#: field:etl.value_mapping_field,write_uid:0
+#: field:etl.value_mapping_field_detail,write_uid:0
+#: field:etl.value_mapping_field_value,write_uid:0
+msgid "Last Updated by"
+msgstr "Última atualização por"
+
+#. module: etl
+#: field:etl.action,write_date:0
+#: field:etl.external_model,write_date:0
+#: field:etl.external_model_record,write_date:0
+#: field:etl.field,write_date:0
+#: field:etl.field_mapping,write_date:0
+#: field:etl.manager,write_date:0
+#: field:etl.value_mapping_field,write_date:0
+#: field:etl.value_mapping_field_detail,write_date:0
+#: field:etl.value_mapping_field_value,write_date:0
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+#: field:etl.action,log:0
+#: view:etl.manager:etl.view_etl_manager_form
+#: field:etl.manager,log:0
+msgid "Log"
+msgstr "Log"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,manager_id:0
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,manager_id:0
+#: view:etl.manager:etl.view_etl_manager_form
+#: model:ir.actions.act_window,name:etl.action_etl_manager_manager
+#: model:ir.ui.menu,name:etl.menu_manager
+#: model:res.groups,name:etl.group_manager
+msgid "Manager"
+msgstr "Gestor"
+
+#. module: etl
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_form
+msgid "Map Records"
+msgstr "Mapear Registos"
+
+#. module: etl
+#: field:etl.value_mapping_field,value_mapping_field_value_ids:0
+msgid "Mapping Values"
+msgstr "Valores de Mapeamento"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Match Fields"
+msgstr "Corresponder Campos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Match Models"
+msgstr "Corresponder Modelos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Match and Order"
+msgstr "Corresponder e Ordenar"
+
+#. module: etl
+#: selection:etl.field_mapping,type:0
+msgid "Migrated ID"
+msgstr "ID Migrado"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,model:0
+#: field:etl.field,model_id:0
+msgid "Model"
+msgstr "Modelo"
+
+#. module: etl
+#: field:etl.manager,model_exception_words:0
+msgid "Model Exception Words"
+msgstr "Modelo Palavras de Excepção"
+
+#. module: etl
+#: field:etl.field_mapping,model_field_id:0
+msgid "Model Field"
+msgstr "Campo Modelo"
+
+#. module: etl
+#: field:etl.field_mapping,model_field:0
+msgid "Model Field Exp."
+msgstr "Modelo Expressão de Campo"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Models"
+msgstr "Modelos"
+
+#. module: etl
+#: field:etl.manager,model_analyze_default:0
+msgid "Models Analyze by Default"
+msgstr "Modelos Analizados por Defeito"
+
+#. module: etl
+#: field:etl.manager,model_disable_default:0
+msgid "Models Disabled by Default"
+msgstr "Modelos Desativados por Defeito"
+
+#. module: etl
+#: field:etl.manager,workflow_models:0
+msgid "Models to delete Workflows"
+msgstr "Modelos para apagar Workflows"
+
+#. module: etl
+#: field:etl.manager,modules_to_install:0
+msgid "Modules To Install"
+msgstr "Módulos para Instalar"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,name:0
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,name:0
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,name:0
+#: view:etl.manager:etl.view_etl_manager_filter
+#: field:etl.manager,name:0
+msgid "Name"
+msgstr "Nome"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+msgid "Not Grey"
+msgstr "Ativadas"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+#: field:etl.action,note:0
+#: field:etl.field_mapping,note:0
+#: field:etl.manager,note:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,order:0
+msgid "Order"
+msgstr "Ordenar"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Order Actions"
+msgstr "Ordenar Ações"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Read Active Source Models"
+msgstr "Ler Modelos de Origem Ativos"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_form
+msgid "Read Fields"
+msgstr "Ler Campos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Read Models"
+msgstr "Ler Modelos"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_form
+msgid "Read Records"
+msgstr "Ler Registos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Read and get Records"
+msgstr "Ler e obter Registos"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: view:etl.external_model:etl.view_etl_external_model_form
+#: field:etl.external_model,records:0
+msgid "Records"
+msgstr "Registos"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,relation:0
+msgid "Relation"
+msgstr "Relação"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,relation_field:0
+msgid "Relation Field"
+msgstr "Campo de Relação"
+
+#. module: etl
+#: field:etl.action,repeating_action:0
+msgid "Repeating Action?"
+msgstr "Ação de Repetição?"
+
+#. module: etl
+#: field:etl.manager,repeating_models:0
+msgid "Repeating Models"
+msgstr "Modelos de Repetição"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,required:0
+msgid "Required"
+msgstr "Obrigatório"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Run Action"
+msgstr "Correr Ação"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Run Actions"
+msgstr "Correr Ações"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_form
+msgid "Run Expressions"
+msgstr "Correr Expressões"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Run Repeated Action"
+msgstr "Correr Ação Repetida"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "Run Repeating Actions"
+msgstr "Correr Ações Repetidas"
+
+#. module: etl
+#: selection:etl.value_mapping_field,type:0
+msgid "Selection"
+msgstr "Seleção"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,sequence:0
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,sequence:0
+msgid "Sequence"
+msgstr "Sequência"
+
+#. module: etl
+#: selection:etl.external_model,type:0
+msgid "Source"
+msgstr "Origem"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_filter
+#: field:etl.manager,source_database:0
+msgid "Source Database"
+msgstr "Base de Dados Origem"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,source_domain:0
+msgid "Source Domain"
+msgstr "Domínio Origem"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,source_field:0
+msgid "Source Exp."
+msgstr "Expressão Origem"
+
+#. module: etl
+#: field:etl.value_mapping_field_detail,source_external_model_record_id:0
+msgid "Source External Model Record"
+msgstr "Registo de Modelo Externo Origem"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,source_field_id:0
+msgid "Source Field"
+msgstr "Campo Origem"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_filter
+#: field:etl.manager,source_hostname:0
+msgid "Source Hostname"
+msgstr "Hostname Origem"
+
+#. module: etl
+#: field:etl.value_mapping_field_detail,source_id:0
+msgid "Source ID"
+msgstr "ID Origem"
+
+#. module: etl
+#: field:etl.manager,source_lang:0
+msgid "Source Language"
+msgstr "Linguagem Origem"
+
+#. module: etl
+#: field:etl.manager,source_login:0
+msgid "Source Login"
+msgstr "Login Origem"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,source_model_id:0
+#: field:etl.value_mapping_field,source_model_id:0
+msgid "Source Model"
+msgstr "Modelo Origem"
+
+#. module: etl
+#: field:etl.manager,source_password:0
+msgid "Source Password"
+msgstr "Password Origem"
+
+#. module: etl
+#: field:etl.manager,source_port:0
+msgid "Source Port"
+msgstr "Porta Origem"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,type:0
+msgid "Source Type"
+msgstr "Tipo Origem"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+#: field:etl.value_mapping_field_detail,source_value:0
+#: field:etl.value_mapping_field_detail,source_value_id:0
+msgid "Source Value"
+msgstr "Valor Origem"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+msgid "Source..."
+msgstr "Origem..."
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,state:0
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: etl
+#: selection:etl.external_model,type:0
+msgid "Target"
+msgstr "Destino"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_filter
+#: field:etl.manager,target_database:0
+msgid "Target Database"
+msgstr "Base de Dados Destino"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,target_field:0
+msgid "Target Exp."
+msgstr "Expressão Destino"
+
+#. module: etl
+#: field:etl.value_mapping_field_detail,target_external_model_record_id:0
+msgid "Target External Model Record"
+msgstr "Registo de Modelo Externo Destino"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: field:etl.field_mapping,target_field_id:0
+msgid "Target Field"
+msgstr "Campo Destino"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_filter
+#: field:etl.manager,target_hostname:0
+msgid "Target Hostname"
+msgstr "Hostname Destino"
+
+#. module: etl
+#: field:etl.value_mapping_field_detail,target_id:0
+msgid "Target ID"
+msgstr "ID Destino"
+
+#. module: etl
+#: field:etl.action,target_id_type:0
+msgid "Target ID Type"
+msgstr "ID Tipo Destino"
+
+#. module: etl
+#: field:etl.manager,target_lang:0
+msgid "Target Language"
+msgstr "Linguagem Destino"
+
+#. module: etl
+#: field:etl.manager,target_login:0
+msgid "Target Login"
+msgstr "Login Destino"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: field:etl.action,target_model_id:0
+#: field:etl.value_mapping_field,target_model_id:0
+msgid "Target Model"
+msgstr "Modelo Destino"
+
+#. module: etl
+#: field:etl.manager,target_password:0
+msgid "Target Password"
+msgstr "Password Destino"
+
+#. module: etl
+#: field:etl.manager,target_port:0
+msgid "Target Port"
+msgstr "Porta Destino"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+#: field:etl.value_mapping_field_detail,target_value:0
+#: field:etl.value_mapping_field_detail,target_value_id:0
+msgid "Target Value"
+msgstr "Valor Destino"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+msgid "To Map"
+msgstr "Para mapear"
+
+#. module: etl
+#: field:etl.action,to_rec_id:0
+msgid "To Record"
+msgstr "Para Registo"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: field:etl.external_model,type:0
+#: view:etl.field:etl.view_etl_field_filter
+#: field:etl.field,ttype:0
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_filter
+#: field:etl.value_mapping_field,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: etl
+#: code:addons\etl\manager.py:164
+#: code:addons\etl\manager.py:174
+#, python-format
+msgid "Unable to Connect to Database. 'Error: %s'"
+msgstr "Não é possível conectar à base de dados. 'Erro: %s'"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_form
+msgid "Update Records Number"
+msgstr "Atualizar número de registos"
+
+#. module: etl
+#: model:res.groups,name:etl.group_user
+msgid "User"
+msgstr "Utilizador"
+
+#. module: etl
+#: selection:etl.field_mapping,type:0
+msgid "Value Mapping"
+msgstr "Mapeamento de Valor"
+
+#. module: etl
+#: field:etl.field_mapping,value_mapping_field_id:0
+msgid "Value Mapping Field"
+msgstr "Mapeamento de Valor do Campo"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+#: field:etl.manager,value_mapping_field_ids:0
+#: model:ir.actions.act_window,name:etl.action_etl_value_mapping_field_value_mapping_fields
+#: model:ir.ui.menu,name:etl.menu_value_mapping_fields
+msgid "Value Mapping Fields"
+msgstr "Mapeamento de Valores dos Campos"
+
+#. module: etl
+#: view:etl.external_model_record:etl.view_etl_external_model_record_filter
+#: field:etl.external_model_record,ext_id:0
+msgid "Value To be Mapped"
+msgstr "Valores a Mapear"
+
+#. module: etl
+#: model:ir.actions.act_window,name:etl.action_etl_value_mapping_field_detail_values_mapping
+#: model:ir.ui.menu,name:etl.menu_values_mapping
+msgid "Values Mapping"
+msgstr "Mapeamento de Valores"
+
+#. module: etl
+#: code:addons\etl\field_mapping.py:256
+#, python-format
+msgid "Warning. Type expression choosen buy not expression set"
+msgstr "Atenção. Tipo de expressão escolhida mas não definida"
+
+#. module: etl
+#: view:etl.action:etl.view_etl_action_filter
+#: view:etl.action:etl.view_etl_action_form
+#: view:etl.action:etl.view_etl_action_tree
+#: model:ir.model,name:etl.model_etl_action
+msgid "action"
+msgstr "Ação"
+
+#. module: etl
+#: selection:etl.action,target_id_type:0
+msgid "builded_id"
+msgstr "builded_id"
+
+#. module: etl
+#: selection:etl.action,state:0
+#: selection:etl.field_mapping,state:0
+msgid "disabled"
+msgstr "Desativado"
+
+#. module: etl
+#: selection:etl.action,state:0
+#: selection:etl.field_mapping,state:0
+msgid "enabled"
+msgstr "Ativado"
+
+#. module: etl
+#: selection:etl.field_mapping,type:0
+msgid "expression"
+msgstr "Expressão"
+
+#. module: etl
+#: view:etl.external_model:etl.view_etl_external_model_filter
+#: view:etl.external_model:etl.view_etl_external_model_form
+#: view:etl.external_model:etl.view_etl_external_model_tree
+#: model:ir.model,name:etl.model_etl_external_model
+msgid "external_model"
+msgstr "Modelo Externo"
+
+#. module: etl
+#: field:etl.external_model_record,external_model_id:0
+msgid "external_model_id"
+msgstr "Modelo Externo"
+
+#. module: etl
+#: view:etl.external_model_record:etl.view_etl_external_model_record_filter
+#: view:etl.external_model_record:etl.view_etl_external_model_record_form
+#: view:etl.external_model_record:etl.view_etl_external_model_record_tree
+#: model:ir.model,name:etl.model_etl_external_model_record
+msgid "external_model_record"
+msgstr "Registo de Modelo Externo"
+
+#. module: etl
+#: field:etl.external_model,external_model_record_ids:0
+msgid "external_model_record_ids"
+msgstr "Modelo Externo"
+
+#. module: etl
+#: view:etl.field:etl.view_etl_field_filter
+#: view:etl.field:etl.view_etl_field_form
+#: view:etl.field:etl.view_etl_field_tree
+#: selection:etl.field_mapping,type:0
+#: model:ir.model,name:etl.model_etl_field
+msgid "field"
+msgstr "Campo"
+
+#. module: etl
+#: view:etl.field_mapping:etl.view_etl_field_mapping_filter
+#: view:etl.field_mapping:etl.view_etl_field_mapping_form
+#: view:etl.field_mapping:etl.view_etl_field_mapping_tree
+#: model:ir.model,name:etl.model_etl_field_mapping
+msgid "field_mapping"
+msgstr "Mapeamento de Campo"
+
+#. module: etl
+#: field:etl.value_mapping_field,log:0
+msgid "log"
+msgstr "Log"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_filter
+#: view:etl.manager:etl.view_etl_manager_form
+#: view:etl.manager:etl.view_etl_manager_tree
+#: model:ir.model,name:etl.model_etl_manager
+msgid "manager"
+msgstr "Gestor"
+
+#. module: etl
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_filter
+#: field:etl.value_mapping_field,manager_id:0
+msgid "manager_id"
+msgstr "Gestor"
+
+#. module: etl
+#: selection:etl.action,state:0
+msgid "no_records"
+msgstr "Sem registos"
+
+#. module: etl
+#: view:etl.manager:etl.view_etl_manager_form
+msgid "notes"
+msgstr "Notas"
+
+#. module: etl
+#: model:ir.module.category,description:etl.module_category_etl
+#: model:ir.module.category,name:etl.module_category_etl
+msgid "odoo ETL"
+msgstr "Odoo ETL"
+
+#. module: etl
+#: selection:etl.field_mapping,state:0
+msgid "on_repeating"
+msgstr "A repetir"
+
+#. module: etl
+#: selection:etl.field_mapping,state:0
+msgid "other_class"
+msgstr "Outra classe"
+
+#. module: etl
+#: selection:etl.field_mapping,type:0
+msgid "reference"
+msgstr "Referência"
+
+#. module: etl
+#: field:etl.external_model,source_action_ids:0
+msgid "source_action_ids"
+msgstr "Ação Origem"
+
+#. module: etl
+#: selection:etl.action,target_id_type:0
+msgid "source_id"
+msgstr "Origem"
+
+#. module: etl
+#: field:etl.action,source_id_exp:0
+msgid "source_id_exp"
+msgstr "Expressão Origem"
+
+#. module: etl
+#: field:etl.external_model,target_action_ids:0
+msgid "target_action_ids"
+msgstr "Ação Destino""
+
+#. module: etl
+#: field:etl.action,target_id_prefix:0
+msgid "target_id_prefix"
+msgstr "Prefixo Destino"
+
+#. module: etl
+#: selection:etl.action,state:0
+#: selection:etl.field_mapping,state:0
+msgid "to_analyze"
+msgstr "A analisar"
+
+#. module: etl
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_filter
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_form
+#: view:etl.value_mapping_field:etl.view_etl_value_mapping_field_tree
+#: model:ir.model,name:etl.model_etl_value_mapping_field
+msgid "value_mapping_field"
+msgstr "Mapeamento de Valor do Campo"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_form
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_tree
+#: model:ir.model,name:etl.model_etl_value_mapping_field_detail
+msgid "value_mapping_field_detail"
+msgstr "Mapeamento de Valor de Detalhe do Campo"
+
+#. module: etl
+#: view:etl.value_mapping_field_detail:etl.view_etl_value_mapping_field_detail_filter
+#: field:etl.value_mapping_field_detail,value_mapping_field_id:0
+#: field:etl.value_mapping_field_value,value_mapping_field_id:0
+msgid "value_mapping_field_id"
+msgstr "Mapeamento de Valor do Campo"
+
+#. module: etl
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_filter
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_form
+#: view:etl.value_mapping_field_value:etl.view_etl_value_mapping_field_value_tree
+#: model:ir.model,name:etl.model_etl_value_mapping_field_value
+msgid "value_mapping_field_value"
+msgstr "Valor de Mapeamento de Valor do Campo"
+
