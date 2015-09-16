@@ -158,6 +158,7 @@ class field_mapping(models.Model):
                     if source_reference[0]:
                         source_reference_splited = source_reference[0][0].split(
                             '.', 1)
+                        print 'source_reference_splited', source_reference_splited
                         if len(source_reference_splited) == 1:
                             module = False
                             external_ref = source_reference_splited[0]
@@ -165,8 +166,14 @@ class field_mapping(models.Model):
                             module = source_reference_splited[0]
                             external_ref = source_reference_splited[1]
                         try:
-                            target_id = target_ir_model_data_obj.get_object_reference(
-                                module, external_ref)[1]
+                            # cambiamos a esta manera fea porque el metodo de abajo no andaba
+                            target_ids = target_ir_model_data_obj.search([(
+                                'module', '=', module), ('name', '=', external_ref)])
+                            target_ids = target_ir_model_data_obj.read(target_ids, ['res_id'])
+                            if target_ids:
+                                target_id = target_ids[0].get('res_id', False)
+                            # target_id = target_ir_model_data_obj.get_object_reference(
+                                # module, external_ref)[1]
                         except:
                             target_id = False
             result.append(target_id)
