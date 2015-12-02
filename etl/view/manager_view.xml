@@ -55,6 +55,9 @@
                         <group>
                             <field name="name"/>
                         </group>
+                        <group>
+                            <field name="target_id_type"/>
+                        </group>
                         <group col="6">
                             <field name="source_hostname"
                                 />
