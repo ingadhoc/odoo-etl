@@ -147,6 +147,15 @@ class manager(models.Model):
         # TODO improove this and load all translations for tranlatable fields
         help='Language used on target database translatable fields'
         )
+    target_id_type = fields.Selection(
+        [(u'source_id', 'Source ID'), (u'builded_id', 'Builded ID')],
+        string='Target ID Type',
+        required=True,
+        default='builded_id',
+        help="Selection on how the Records target ID's will be build:\n\t"
+             "    - Source ID - will keep the source ID (external_id)\n\t"
+             "    - Builded ID - every external ID will be build as concatenation of Manager Name + _ + Source Model"   
+        )
 
     _constraints = [
     ]

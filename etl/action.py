@@ -3,7 +3,7 @@
 # For copyright and license notices, see __openerp__.py file in module root
 # directory
 ##############################################################################
-from openerp import models, fields, api
+from openerp import models, fields, api, SUPERUSER_ID
 import sys
 import pytz
 from ast import literal_eval
@@ -63,7 +63,7 @@ class action(models.Model):
         [(u'source_id', 'source_id'), (u'builded_id', 'builded_id')],
         string='Target ID Type',
         required=True,
-        default='source_id'
+        related='manager_id.target_id_type'
         )
     from_rec_id = fields.Integer(
         string='From Record'
@@ -72,7 +72,8 @@ class action(models.Model):
         string='To Record'
         )
     target_id_prefix = fields.Char(
-        string='target_id_prefix'
+        string='target_id_prefix',
+        compute='_get_action_prefix'
         )
     manager_id = fields.Many2one(
         'etl.manager',
@@ -113,6 +114,16 @@ class action(models.Model):
 
     @api.one
     @api.depends(
+        'source_model_id.model','target_id_type'
+        )
+    def _get_action_prefix(self):
+        value = False
+        if self.target_id_type == 'builded_id':
+             value = self.manager_id.name + '_' + self.source_model_id.model.replace('.','_')
+        self.target_id_prefix = value             
+
+    @api.one
+    @api.depends(
         'field_mapping_ids.state'
         )
     def _get_repeating_action(self):
@@ -124,7 +135,7 @@ class action(models.Model):
         if repeating_field_mapps:
             repeating_action = True
         self.repeating_action = repeating_action
-
+        
     @api.multi
     def action_block(self):
         return self.write({'blocked': True})
@@ -217,7 +228,7 @@ class action(models.Model):
             # Check if there is any value mapping for current field
             value_mapping_field = False
             value_mappings = self.env['etl.value_mapping_field'].search([
-                ('name', '=', field.name),
+                ('source_model_id.model', '=', field.relation),
                 ('manager_id', '=', self.manager_id.id)])
             if value_mappings:
                 mapping_type = 'value_mapping'
@@ -360,6 +371,8 @@ class action(models.Model):
             self, source_connection=False, target_connection=False,
             repeated_action=False):
         _logger.info('Actions to run: %i' % len(self.ids))
+        action_obj = self.env['etl.action']
+        model_obj = self.env['etl.external_model']
         field_mapping_obj = self.env['etl.field_mapping']
         value_mapping_field_detail_obj = self.env['etl.value_mapping_field_detail']
         value_mapping_field_obj = self.env['etl.value_mapping_field']
@@ -393,10 +406,11 @@ class action(models.Model):
             state = 'enabled'
 
         # source fields = enabled (or repeating) and type field
-        source_fields.extend([x.source_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype != 'many2many'])
-
+        source_fields.extend([x.source_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype != 'many2many' and x.source_field_id.ttype != 'many2one'])
+        #print source_fields
         # target fields = enabled and field then expression then migrated_id
-        target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype != 'many2many'])
+        target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype != 'many2many' and x.source_field_id.ttype != 'many2one'])
+        target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype == 'many2one'])
         target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype == 'many2many'])
         target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'value_mapping'])
         target_fields.extend([x.target_field for x in self.field_mapping_ids if x.state==state and x.type == 'date_adapt'])
@@ -409,30 +423,67 @@ class action(models.Model):
         source_model_data = source_model_obj.export_data(
             source_model_ids, source_fields)['datas']
 
+        _logger.info('Building m2o field mapping...')
+        # Read and append source values of type 'field' and type m2m
+        source_fields_m2o = [x.id for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype == 'many2one']
+        for field_id in source_fields_m2o:
+            field = field_mapping_obj.browse(field_id)
+            field_model = field.source_field_id.relation
+            model_id = model_obj.search([('model','=',field_model),('type','ilike','source')])
+            field_action = False
+            if model_id:
+                field_action = action_obj.search([('source_model_id','=',model_id[0].id)])
+            if field_action:
+                field_action = field_action[0]
+                for source_data_record in source_model_data:
+                    source_data_m2o = source_model_obj.export_data([int(source_data_record[0])], ['.id', field.source_field, field.source_field.replace('/','.')])['datas']
+                    new_field_value = False
+                    if field_action.target_id_type == 'source_id' and source_data_m2o[0][1]:
+                        new_field_value = source_data_m2o[0][1]
+                    elif field_action.target_id_type == 'builded_id' and source_data_m2o[0][2]:
+                        new_field_value = '%s_%s' % (field_action.target_id_prefix, str(source_data_m2o[0][2]))
+                    source_data_record.append(new_field_value)
+
         _logger.info('Building m2m field mapping...')
         # Read and append source values of type 'field' and type m2m
-        source_fields_m2m = [x.source_field for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype == 'many2many']
-        for field in source_fields_m2m:
-            for source_data_record in source_model_data:
-                source_data_m2m = source_model_obj.export_data(
-                    [int(source_data_record[0])], ['.id', field])['datas']
-                for readed_record in source_data_m2m:
-                    if readed_record[0]:
-                        new_record = readed_record[1]
-                    else:
-                        new_record = new_record + ',' + readed_record[1]
-                source_data_record.append(new_record)
-            source_data_m2m = source_model_obj.export_data(
-                source_model_ids, ['id', field])['datas']
+        source_fields_m2m = [x.id for x in self.field_mapping_ids if x.state==state and x.type == 'field' and x.source_field_id.ttype == 'many2many']
+        for field_id in source_fields_m2m:
+            field = field_mapping_obj.browse(field_id)
+            field_model = field.source_field_id.relation
+            model_id = model_obj.search([('model','=',field_model),('type','ilike','source')])
+            field_action = False
+            if model_id:
+                field_action = action_obj.search([('source_model_id','=',model_id[0].id)])
+            if field_action:
+                field_action = field_action[0]
+                model_data_obj = source_connection.model('ir.model.data')
+                for source_data_record in source_model_data:
+                    source_data_m2m = source_model_obj.export_data([int(source_data_record[0])], ['.id', field.source_field])['datas']
+                    new_field_value = False
+                    for readed_record in source_data_m2m:
+                        if readed_record[1]:
+                            for value in readed_record[1].split(','):
+                                value_id = model_data_obj.search([('model','ilike',field.source_field_id.relation),('name','ilike',value.split('.')[-1])])
+                                if value_id:
+                                    value_id = model_data_obj.export_data([value_id[0]], ['.id', 'res_id'])['datas']
+                                    value_id = value_id[0][1]
+                                if field_action.target_id_type == 'source_id' and value:
+                                    new_field_value = value
+                                elif field_action.target_id_type == 'builded_id' and value_id:
+                                    if new_field_value:
+                                        new_field_value = new_field_value + ',' + '%s_%s' % (field_action.target_id_prefix, str(value_id))
+                                    else:
+                                        new_field_value = '%s_%s' % (field_action.target_id_prefix, str(value_id))
+                    source_data_record.append(new_field_value)
 
         _logger.info('Building value mapping mapping...')
         # Read and append source values of type 'value_mapping'
         source_fields_value_mapping = [x.source_field for x in self.field_mapping_ids if x.state==state and x.type == 'value_mapping']
-        print 'source_fields_value_mapping', source_fields_value_mapping
+        #print 'source_fields_value_mapping', source_fields_value_mapping
         source_data_value_mapping = source_model_obj.export_data(source_model_ids, source_fields_value_mapping)['datas']
-        print 'source_data_value_mapping', source_data_value_mapping
+        #print 'source_data_value_mapping', source_data_value_mapping
         source_value_mapping_id = [x.value_mapping_field_id.id for x in self.field_mapping_ids if x.state==state and x.type == 'value_mapping']
-        print 'source_value_mapping_id', source_value_mapping_id
+        #print 'source_value_mapping_id', source_value_mapping_id
         for readed_record, source_data_record in zip(source_data_value_mapping, source_model_data):
             target_record = []
             for field_value, value_mapping_id in zip(readed_record, source_value_mapping_id):
@@ -515,6 +566,8 @@ class action(models.Model):
 
         _logger.info('Removing auxliaria .id')
         target_model_data = []
+        #print source_model_data
+        #print ''
         for record in source_model_data:
             if self.target_id_type == 'source_id':
                 target_model_data.append(record[1:])
@@ -529,6 +582,7 @@ class action(models.Model):
             vals = {'log': import_result}
         except:
             error = sys.exc_info()
+            print error
             vals = {'log': error}
 
         self.write(vals)
@@ -625,12 +679,14 @@ class action(models.Model):
         if context and context.get('tz'):
             tz_name = context['tz']
         else:
-            tz_name = self.env['res.users'].sudo().read(['tz'])['tz']
+            tz_name = self.env['res.users'].browse(SUPERUSER_ID).tz
+            print tz_name
+            #tz_name = tz_name[0]
         if tz_name:
             utc = pytz.timezone('UTC')
             context_tz = pytz.timezone(tz_name)
-            user_datetime = user_date + relativedelta(hours=12.0)
-            local_timestamp = context_tz.localize(user_datetime, is_dst=False)
+            #user_datetime = user_date + relativedelta(hours=12.0)
+            local_timestamp = context_tz.localize(user_date, is_dst=False)
             user_datetime = local_timestamp.astimezone(utc)
             return user_datetime.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         return user_date.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
