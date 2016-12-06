@@ -1,7 +1,9 @@
 [![Build Status](https://travis-ci.org/ingadhoc/odoo-etl.svg?branch=8.0)](https://travis-ci.org/ingadhoc/odoo-etl)
 [![Coverage Status](https://coveralls.io/repos/ingadhoc/odoo-etl/badge.png?branch=8.0)](https://coveralls.io/r/ingadhoc/odoo-etl?branch=8.0)
 
-#odoo-etl
+odoo-etl (DEPRECEATED)
+
+IMPORTANT: This project is deprecteade and anymore supported by adhoc
 
 Odoo data manipulation, like an small ETL (Extract, Transform and Load) for odoo databases.
 
