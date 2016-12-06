@@ -468,7 +468,11 @@ class action(models.Model):
                                     value_id = model_data_obj.export_data([value_id[0]], ['.id', 'res_id'])['datas']
                                     value_id = value_id[0][1]
                                 if field_action.target_id_type == 'source_id' and value:
-                                    new_field_value = value
+                                    #new_field_value = value
+                                    if new_field_value:
+                                        new_field_value = new_field_value + ',' + value
+                                    else:
+                                        new_field_value = value
                                 elif field_action.target_id_type == 'builded_id' and value_id:
                                     if new_field_value:
                                         new_field_value = new_field_value + ',' + '%s_%s' % (field_action.target_id_prefix, str(value_id))
@@ -579,7 +583,7 @@ class action(models.Model):
             _logger.info('Loadding Data...')
             import_result = target_model_obj.load(
                 target_fields, target_model_data)
-            vals = {'log': import_result}
+            vals = {'log': source_model_data}
         except:
             error = sys.exc_info()
             print error

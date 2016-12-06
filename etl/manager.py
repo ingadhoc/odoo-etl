@@ -385,18 +385,33 @@ class manager(models.Model):
         for manager in self:
             external_model_obj = connection.model("ir.model")
 
-            # osv_memory = False for not catching transients models
-            domain = [('osv_memory', '=', False)]
+            try:
+                # osv_memory = False for not catching transients models
+                domain = [('transient', '=', False)]
 
-            # catch de models excpections worlds and append to search domain
-            words_exception = manager.model_exception_words
-            if words_exception:
-                words_exception = literal_eval(words_exception)
-                for exception in words_exception:
-                    domain.append(('model', 'not like', exception))
+                # catch de models excpections worlds and append to search domain
+                words_exception = manager.model_exception_words
+                if words_exception:
+                    words_exception = literal_eval(words_exception)
+                    for exception in words_exception:
+                        domain.append(('model', 'not like', exception))
 
-            # get external model ids
-            external_model_ids = external_model_obj.search(domain)
+                # get external model ids
+                external_model_ids = external_model_obj.search(domain)
+
+            except:
+                # osv_memory = False for not catching transients models
+                domain = [('osv_memory', '=', False)]
+
+                # catch de models excpections worlds and append to search domain
+                words_exception = manager.model_exception_words
+                if words_exception:
+                    words_exception = literal_eval(words_exception)
+                    for exception in words_exception:
+                        domain.append(('model', 'not like', exception))
+
+                # get external model ids
+                external_model_ids = external_model_obj.search(domain)
 
             # read id, model and name of external models
             external_model_fields = ['.id', 'model', 'name']

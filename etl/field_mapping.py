@@ -258,6 +258,7 @@ class field_mapping(models.Model):
                 'pool': self.pool,
                 'time': time,
                 'cr': self._cr,
+                'logger': _logger,
                 # copy context to prevent side-effects of eval
                 'context': dict(self._context),
                 'uid': self.env.user.id,
